@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Wallpaper Utility",
+    "imageSrc": "projects/wallpaper.jpeg",
+    "description": "Transform your device's wallpaper with ease using our Wallpaper Utility App, powered by Unsplash API and intuitive background removal.",
+    "skills": ["Python", "Unsplash API", "Streamlit"],
+    "demo": "https://wallpaper-utility.streamlit.app/",
+    "source": "https://github.com/Ajay1812/Wallpaper_utility.git"
+  },
+  {
+    "title": "CO2 Emisson And Climate Change Dashboard",
+    "imageSrc": "projects/co2_emisson.gif",
+    "description": "Python-based application to visualize and analyze CO2 emissions and climate change data.",
+    "skills": ["Python", "Streamlit", "HvPlot"],
+    "demo": "https://www.example.com",
+    "source": "https://github.com/Ajay1812/Machine_Learning_Projects/tree/59a23370a49c619af27ecabcb6a0e45b21878355/Co2%20Dashboard"
+  },
+  {
+    "title": "Generate tags and articles using OpenAI API",
+    "imageSrc": "projects/gpt_tags_article.jpg",
+    "description": "Generate tags and article for startup using ChatGPT",
+    "skills": ["Python", "OpenAPI", "Streamlit"],
+    "demo": "https://github.com/Ajay1812/Machine_Learning_Projects/tree/59a23370a49c619af27ecabcb6a0e45b21878355/Gen_Tags_Article_ChatGPT",
+    "source": "https://github.com/Ajay1812/Machine_Learning_Projects/tree/59a23370a49c619af27ecabcb6a0e45b21878355/Gen_Tags_Article_ChatGPT"
+  }
+]

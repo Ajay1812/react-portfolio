@@ -1,0 +1,21 @@
+[
+  {
+    "role": "Data Engineer",
+    "organisation": "Vitispro",
+    "startDate": "May, 2023",
+    "endDate": "Nov, 2023",
+    "experiences": [
+      "Bulk data collection using APIs",
+      "Reduced cost by 50% with zero-shot classification"
+    ],
+    "imageSrc": "history/vitispro.png"
+  },
+  {
+    "role": "Full Stack Developer Intern",
+    "organisation": "BCS Infallible Technology",
+    "startDate": "Jun, 2021",
+    "endDate": "Aug, 2021",
+    "experiences": ["Worked on CafeLink project", "Designed the Admin panel"],
+    "imageSrc": "history/bcs.png"
+  }
+]

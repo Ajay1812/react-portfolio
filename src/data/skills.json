@@ -1,0 +1,46 @@
+[
+  {
+    "title": "Python",
+    "imageSrc": "skills/python.png"
+  },
+  {
+    "title": "PostgresSQL",
+    "imageSrc": "skills/PostgresSQL.png"
+  },
+  {
+    "title": "Power BI",
+    "imageSrc": "skills/powerbi.png"
+  },
+  {
+    "title": "Jupyter",
+    "imageSrc": "skills/Jupyter.png"
+  },
+  {
+    "title": "Pandas",
+    "imageSrc": "skills/Pandas.png"
+  },
+  {
+    "title": "NumPy",
+    "imageSrc": "skills/NumPy.png"
+  },
+  {
+    "title": "Scikit-Learn",
+    "imageSrc": "skills/ScikitL.png"
+  },
+  {
+    "title": "Git",
+    "imageSrc": "skills/Git.png"
+  },
+  {
+    "title": "HTML",
+    "imageSrc": "skills/html.png"
+  },
+  {
+    "title": "CSS",
+    "imageSrc": "skills/css.png"
+  },
+  {
+    "title": "JavaScript",
+    "imageSrc": "skills/javascript.png"
+  }
+]
