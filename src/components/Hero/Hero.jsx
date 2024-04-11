@@ -12,7 +12,7 @@ export const Hero = () => {
           projects. Expertise in Python, SQL, Streamlit, and Power BI, with a
           focus on data analysis projects.
         </p>
-        <a href="a.kumar01c@gmail.com" className={styles.contactBtn}>
+        <a href="mailto:a.kumar01c@gmail.com" className={styles.contactBtn}>
           Contact Me
         </a>
       </div>
