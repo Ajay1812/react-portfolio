@@ -94,7 +94,7 @@
 }
 
 .historyItemDetails {
-  font-family: var(--color-roboto);
+  font-family: var(--font-roboto);
 }
 
 .historyItemDetails h3 {
