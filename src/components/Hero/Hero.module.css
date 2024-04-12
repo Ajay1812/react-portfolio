@@ -19,7 +19,7 @@
 }
 
 .title {
-  font-size: 68px;
+  font-size: 55px;
   font-weight: 900;
   margin-bottom: 33px;
   font-family: var(--font-roboto);
@@ -109,5 +109,16 @@
   }
   .content {
     align-items: center;
+  }
+  .title {
+    font-size: 40px;
+    margin-top: 30px;
+  }
+  .description {
+    font-size: 20px;
+    margin-top: 10px;
+  }
+  .contactBtn {
+    margin-top: 35px;
   }
 }

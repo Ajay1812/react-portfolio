@@ -18,13 +18,13 @@
 }
 
 .title {
-  font-size: 25px;
+  font-size: 24px;
   font-weight: 700;
 }
 
 .description {
   margin-top: 6px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
 }
 
@@ -61,4 +61,19 @@
   border-radius: 100px;
   background: var(--color-primary);
   padding: 1px 22px;
+}
+
+@media screen and (max-width: 830px) {
+  .title {
+    font-size: x-large;
+  }
+  .description {
+    font-size: medium;
+  }
+  .skill {
+    font-size: medium;
+  }
+  .link {
+    font-size: x-large;
+  }
 }

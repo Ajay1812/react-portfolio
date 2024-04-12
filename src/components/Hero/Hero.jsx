@@ -8,9 +8,9 @@ export const Hero = () => {
       <div className={styles.content}>
         <h1 className={styles.title}>Hi, I'm Ajay 👋</h1>
         <p className={styles.description}>
-          Experienced Data Engineer at Vitispro, skilled in web scraping and NLP
-          projects. Expertise in Python, SQL, Streamlit, and Power BI, with a
-          focus on data analysis projects.
+          Experienced Data Engineer skilled in web scraping and NLP projects.
+          Expertise in Python, SQL, Streamlit, and Power BI, with a focus on
+          data analysis projects.
         </p>
         <a href="mailto:a.kumar01c@gmail.com" className={styles.contactBtn}>
           Contact Me
