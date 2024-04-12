@@ -12,9 +12,14 @@ export const Hero = () => {
           Expertise in Python, SQL, Streamlit, and Power BI, with a focus on
           data analysis projects.
         </p>
-        <a href="mailto:a.kumar01c@gmail.com" className={styles.contactBtn}>
-          Contact Me
-        </a>
+        <div className={styles.buttonContainer}>
+          <a href="mailto:a.kumar01c@gmail.com" className={styles.contactBtn}>
+            Contact Me
+          </a>
+          <a href="https://bit.ly/3VASQWy" className={styles.contactBtn}>
+            &nbsp;&nbsp;&nbsp;&nbsp;Resume&nbsp;&nbsp;&nbsp;&nbsp;
+          </a>
+        </div>
       </div>
       <img
         src={getImageUrl("hero/profile.png")}
