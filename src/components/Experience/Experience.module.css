@@ -154,9 +154,10 @@
     height: 40px;
   }
   .skill p {
-    font-size: 18px;
+    font-size: 12px;
     font-family: var(--color-roboto);
     font-weight: 200;
+    margin-top: 8px;
   }
   .historyItemDetails ul {
     font-size: 15px;
