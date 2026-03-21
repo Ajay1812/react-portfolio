@@ -1,134 +1,621 @@
 @import "../../vars.css";
 
 .container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 49px;
-  z-index: 1;
-  margin-left: 10%;
-  margin-right: 10%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  justify-items: center;
+  padding-top: 0.6rem;
 }
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  color: var(--color-text);
-  z-index: 1;
+
+.copyColumn {
+  display: grid;
+  gap: 1.15rem;
+  padding-top: 0.75rem;
+  justify-items: center;
+  text-align: center;
+  max-width: 700px;
+}
+
+.kicker,
+.prompt,
+.workspaceLabel span,
+.workspaceLabel strong,
+.codeHeader,
+.profileRole,
+.focusChip,
+.command,
+.output,
+.lineNumber,
+.commandHint {
+  font-family: var(--font-mono);
+}
+
+.kicker {
+  width: fit-content;
+  padding: 0.5rem 0.78rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, var(--color-accent-tint), transparent 78%),
+    var(--color-panel-alt);
+  color: var(--color-accent);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  box-shadow: var(--glass-sheen);
 }
 
 .title {
-  font-size: 55px;
-  font-weight: 900;
-  margin-bottom: 33px;
-  font-family: var(--font-roboto);
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 1) 75%,
-    rgba(255, 255, 255, 0) 120%
-  );
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
+  max-width: 10ch;
+  font-size: clamp(2.35rem, 6vw, 4.45rem);
+  line-height: 0.96;
+  letter-spacing: -0.07em;
+}
+
+.titleAccent {
+  display: block;
+  margin-top: 0.45rem;
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: clamp(0.96rem, 2.4vw, 1.72rem);
+  letter-spacing: -0.04em;
 }
 
 .description {
-  margin-right: 10px;
-  font-size: 30px;
-  font-family: var(--font-roboto);
-  margin-bottom: 52px;
-  text-align: justify;
+  max-width: 52ch;
+  color: var(--color-muted-strong);
+  font-size: 0.98rem;
 }
 
-.contactBtn {
-  text-decoration: none;
-  background-color: var(--color-primary);
-  color: var(--color-text);
-  border-radius: 100px;
-  font-size: 30px;
-  font-weight: 600;
-  padding: 17px 26px;
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
-  margin: 0px 0px 10px 15px;
-}
-.buttonContainer {
+.buttonContainer,
+.focusRow {
   display: flex;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.primaryBtn,
+.secondaryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.82rem 1.08rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.primaryBtn {
+  background: linear-gradient(135deg, var(--color-accent-strong) 0%, var(--color-accent-alt) 100%);
+  border-color: transparent;
+  color: var(--color-button-ink);
+  font-weight: 700;
+  box-shadow: 0 14px 26px var(--color-accent-tint);
+}
+
+.secondaryBtn {
+  background: linear-gradient(180deg, var(--color-panel-alt), var(--color-panel));
+  color: var(--color-heading);
+  box-shadow: var(--glass-sheen);
+}
+
+.primaryBtn:hover,
+.secondaryBtn:hover,
+.primaryBtn:focus-visible,
+.secondaryBtn:focus-visible {
+  transform: translateY(-2px);
+}
+
+.commandHint {
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.82rem 0.92rem;
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background: linear-gradient(180deg, var(--color-panel), var(--color-panel-alt));
+  color: var(--color-muted-strong);
+  font-size: 0.76rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.prompt {
+  color: var(--color-accent);
+}
+
+.focusChip {
+  padding: 0.52rem 0.74rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background:
+    linear-gradient(135deg, var(--color-accent-tint), transparent 90%),
+    var(--color-panel);
+  color: var(--color-muted-strong);
+  font-size: 0.74rem;
+  box-shadow: var(--glass-sheen);
+}
+
+.metaGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+  width: 100%;
+}
+
+.metaCard {
+  padding: 0.9rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: linear-gradient(180deg, var(--color-panel), var(--color-panel-alt));
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+}
+
+.metaCard::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: calc(var(--radius-md) - 1px);
+  border: 1px solid var(--glass-border);
+  pointer-events: none;
+}
+
+.metaCard span {
+  display: block;
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.metaCard strong {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--color-heading);
+  font-size: 0.86rem;
+  line-height: 1.4;
+}
+
+.workspace {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at top right, var(--color-accent-tint), transparent 28%),
+    radial-gradient(circle at bottom left, var(--color-success-tint), transparent 24%),
+    linear-gradient(180deg, var(--color-panel), var(--color-panel-alt));
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+.workspace::before {
+  content: "";
+  position: absolute;
+  inset: 1rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  pointer-events: none;
+}
+
+.workspaceHeader {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  text-align: center;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+}
+
+.workspaceLabel {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.workspaceLabel span {
+  color: var(--color-muted);
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.workspaceLabel strong {
+  color: var(--color-heading);
+  font-size: 0.86rem;
+}
+
+.windowDots {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.windowDots span {
+  width: 0.62rem;
+  height: 0.62rem;
+  border-radius: 999px;
+  background: var(--color-border-strong);
+}
+
+.windowDots span:nth-child(1) {
+  background: var(--window-dot-rose);
+}
+
+.windowDots span:nth-child(2) {
+  background: var(--window-dot-amber);
+}
+
+.windowDots span:nth-child(3) {
+  background: var(--window-dot-green);
+}
+
+.workspaceBody {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.profileCard,
+.codeCard,
+.terminalCard {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, var(--color-panel-strong), var(--color-panel-alt));
+  box-shadow: var(--glass-sheen);
+}
+
+.profileCard {
+  padding: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.profileImageWrap {
+  width: 76px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 999px;
+  border: 1px solid var(--color-border-strong);
+  background:
+    linear-gradient(145deg, var(--color-accent-tint), transparent 70%),
+    linear-gradient(180deg, var(--color-bg-soft), transparent);
+  flex-shrink: 0;
 }
 
 .heroImg {
-  width: 40%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 24%;
+}
+
+.profileCopy {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.profileName {
+  color: var(--color-heading);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.profileRole {
+  color: var(--color-accent);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.profileTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.45rem;
+}
+
+.profileTags span {
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, var(--color-accent-tint), transparent 100%),
+    var(--color-panel-alt);
+  color: var(--color-muted-strong);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+
+.codeCard {
+  padding: 1rem;
+}
+
+.codeHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--color-muted);
+  font-size: 0.72rem;
+}
+
+.codeBlock {
+  margin-top: 0.9rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.codeLine {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  gap: 0.9rem;
+  align-items: start;
+}
+
+.lineNumber {
+  color: var(--color-muted);
+  font-size: 0.8rem;
+}
+
+.codeText {
+  color: var(--color-muted-strong);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.plain {
+  color: var(--color-muted-strong);
+}
+
+.keyword {
+  color: var(--color-accent);
+}
+
+.string {
+  color: var(--color-success);
+}
+
+.callout {
+  color: var(--color-warning);
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.metricCard {
+  padding: 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(135deg, var(--color-accent-tint), transparent 95%),
+    var(--color-panel-alt);
+  box-shadow: var(--glass-sheen);
+}
+
+.metricCard strong {
+  display: block;
+  color: var(--color-heading);
+  font-size: 0.86rem;
+}
+
+.metricCard span {
+  display: block;
+  margin-top: 0.45rem;
+  color: var(--color-muted-strong);
+  font-size: 0.82rem;
+}
+
+.terminalCard {
+  padding: 0.9rem;
+  display: grid;
+  gap: 0.65rem;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, var(--color-command), var(--color-panel-alt));
+}
+
+.terminalLine {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.command {
+  color: var(--color-command-text);
+  font-size: 0.82rem;
+}
+
+.output {
+  color: var(--color-command-output);
+  font-size: 0.8rem;
+  padding-left: 1.1rem;
+}
+
+:global(:root[data-theme="dark"]) .workspace {
+  border-color: rgba(95, 174, 255, 0.12);
+  background:
+    radial-gradient(circle at top right, rgba(95, 174, 255, 0.16), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(74, 194, 107, 0.12), transparent 24%),
+    linear-gradient(180deg, rgba(16, 26, 43, 0.94), rgba(8, 15, 27, 0.98));
+  box-shadow:
+    0 34px 72px rgba(0, 0, 0, 0.34),
+    0 12px 28px rgba(95, 174, 255, 0.08);
+}
+
+:global(:root[data-theme="dark"]) .workspace::before {
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+:global(:root[data-theme="dark"]) .profileCard,
+:global(:root[data-theme="dark"]) .codeCard,
+:global(:root[data-theme="dark"]) .metricCard {
+  border-color: rgba(182, 199, 219, 0.1);
+  background:
+    linear-gradient(180deg, rgba(18, 30, 48, 0.94), rgba(10, 17, 30, 0.96));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+:global(:root[data-theme="dark"]) .profileTags span {
+  background:
+    linear-gradient(135deg, rgba(95, 174, 255, 0.14), transparent 100%),
+    rgba(18, 30, 48, 0.88);
+}
+
+:global(:root[data-theme="dark"]) .codeHeader,
+:global(:root[data-theme="dark"]) .lineNumber {
+  color: #7f96b6;
+}
+
+:global(:root[data-theme="dark"]) .terminalCard {
+  border-color: rgba(95, 174, 255, 0.14);
+  background: linear-gradient(180deg, #08111f 0%, #0b1526 54%, #050b16 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 18px 36px rgba(0, 0, 0, 0.28);
+}
+
+:global(:root[data-theme="dark"]) .terminalCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top right, rgba(134, 179, 255, 0.12), transparent 28%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 24%);
+  pointer-events: none;
+}
+
+:global(:root[data-theme="dark"]) .command,
+:global(:root[data-theme="dark"]) .output {
+  position: relative;
   z-index: 1;
-  margin-left: 30px;
-
-  animation-name: floating;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
 }
 
-@keyframes floating {
-  0% {
-    transform: translate(0, 0px);
-  }
-  50% {
-    transform: translate(0, 10px);
-  }
-  100% {
-    transform: translate(0, -0px);
-  }
+:global(:root[data-theme="dark"]) .command {
+  color: #f8fbff;
+  font-weight: 500;
 }
 
-.topBlur {
+:global(:root[data-theme="dark"]) .prompt {
+  color: #7fb0ff;
+}
+
+:global(:root[data-theme="dark"]) .output {
+  color: #b8cee4;
+}
+
+:global(:root[data-theme="light"]) .workspace {
+  border-color: rgba(88, 72, 48, 0.14);
+  background:
+    radial-gradient(circle at top right, rgba(41, 93, 255, 0.1), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(212, 119, 45, 0.12), transparent 24%),
+    linear-gradient(180deg, rgba(255, 252, 247, 0.98), rgba(244, 235, 223, 0.96));
+  box-shadow:
+    0 28px 60px rgba(90, 73, 49, 0.12),
+    0 8px 20px rgba(90, 73, 49, 0.08);
+}
+
+:global(:root[data-theme="light"]) .workspace::before {
+  inset: 0.75rem;
+  border-color: rgba(255, 255, 255, 0.86);
+}
+
+:global(:root[data-theme="light"]) .profileCard,
+:global(:root[data-theme="light"]) .codeCard,
+:global(:root[data-theme="light"]) .metricCard {
+  border-color: rgba(16, 34, 58, 0.08);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 240, 231, 0.92));
+  box-shadow: 0 10px 24px rgba(72, 87, 109, 0.08);
+}
+
+:global(:root[data-theme="light"]) .profileTags span {
+  background:
+    linear-gradient(135deg, rgba(41, 93, 255, 0.08), transparent 100%),
+    rgba(255, 255, 255, 0.92);
+}
+
+:global(:root[data-theme="light"]) .codeHeader,
+:global(:root[data-theme="light"]) .lineNumber {
+  color: #61718a;
+}
+
+:global(:root[data-theme="light"]) .terminalCard {
+  border-color: rgba(30, 58, 102, 0.16);
+  background: linear-gradient(180deg, #1a2a42 0%, #223652 58%, #172536 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 18px 36px rgba(23, 37, 54, 0.18);
+}
+
+:global(:root[data-theme="light"]) .terminalCard::before {
+  content: "";
   position: absolute;
-  width: 50vw;
-  height: 50vw;
-  min-width: 350px;
-  min-width: 350px;
-  top: -128px;
-  left: -10vw;
-  border-radius: 764px;
-  background: rgba(25, 55, 109, 0.7);
-  filter: blur(100px);
-  z-index: 0;
+  inset: 0;
+  background:
+    radial-gradient(circle at top right, rgba(118, 165, 255, 0.18), transparent 30%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 26%);
+  pointer-events: none;
 }
 
-.bottomBlur {
-  position: absolute;
-  width: 70vw;
-  height: 50vw;
-  min-width: 350px;
-  min-width: 250px;
-  top: 246px;
-  left: 10vw;
-  right: -25vw;
-  border-radius: 764px;
-  background: rgba(25, 55, 109, 0.7);
-  filter: blur(100px);
-  z-index: 0;
+:global(:root[data-theme="light"]) .command,
+:global(:root[data-theme="light"]) .output {
+  position: relative;
+  z-index: 1;
 }
 
-@media screen and (max-width: 830px) {
+:global(:root[data-theme="light"]) .command {
+  color: #f7fbff;
+  font-weight: 500;
+}
+
+:global(:root[data-theme="light"]) .prompt {
+  color: #76a5ff;
+}
+
+:global(:root[data-theme="light"]) .output {
+  color: #d4e1f0;
+}
+
+@media screen and (max-width: 720px) {
   .container {
-    flex-direction: column-reverse;
+    gap: 1.2rem;
   }
-  .content {
+
+  .copyColumn {
+    gap: 1.1rem;
+    padding-top: 0.4rem;
+  }
+
+  .metaGrid,
+  .metricsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .profileCard {
     align-items: center;
+    flex-direction: column;
   }
-  .title {
-    font-size: 40px;
-    margin-top: 15px;
-  }
-  .description {
-    font-size: 20px;
-    margin-top: 5px;
-  }
-  .contactBtn {
-    margin-top: 5px;
-    font-size: large;
-  }
-  .contactBtn {
-    padding: 14px 8px;
+
+  .workspace,
+  .metaCard,
+  .metricCard {
+    border-radius: 24px;
   }
 }

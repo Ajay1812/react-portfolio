@@ -1,30 +1,48 @@
-import React from "react";
-import { getImageUrl } from "../../utilis";
 import styles from "./Contact.module.css";
 
 export const Contact = () => {
+  const links = [
+    { label: "Email", value: "a.kumar01c@gmail.com", href: "mailto:a.kumar01c@gmail.com" },
+    {
+      label: "LinkedIn",
+      value: "linkedin",
+      href: "https://www.linkedin.com/in/nf-analyst/?skipRedirect=true",
+    },
+    {
+      label: "GitHub",
+      value: "github",
+      href: "https://github.com/Ajay1812",
+    },
+  ];
+
   return (
     <footer id="contact" className={styles.container}>
       <div className={styles.text}>
-        <h2>Contact</h2>
-        <p>Feel free to reach out!</p>
+        <p className={styles.eyebrow}>Contact</p>
+        <h2 className={styles.title}>Let’s connect.</h2>
+        <p>
+          Open to data engineering, Databricks, Spark, and cloud pipeline roles.
+        </p>
       </div>
-      <ul className={styles.links}>
-        <li className={styles.link}>
-          <img src={getImageUrl("contact/emailIcon.png")} alt="Email icon" />
-          <a href="mailto:a.kumar01c@gmail.com">a.kumar01c@gmail.com</a>
-        </li>
-        <li className={styles.link}>
-          <img src={getImageUrl("contact/linkedinIcon.png")} alt="Email icon" />
-          <a href="https://www.linkedin.com/in/nf-analyst">
-            linkedin.com/in/nf-analyst
-          </a>
-        </li>
-        <li className={styles.link}>
-          <img src={getImageUrl("contact/githubIcon.png")} alt="Email icon" />
-          <a href="https://github.com/Ajay1812">github.com/Ajay1812</a>
-        </li>
-      </ul>
+
+      <div className={styles.actions}>
+        <a className={styles.primaryCta} href="mailto:a.kumar01c@gmail.com">
+          email me
+        </a>
+        <ul className={styles.links}>
+          {links.slice(1).map((link) => (
+            <li key={link.label} className={styles.link}>
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {link.value}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </footer>
   );
 };

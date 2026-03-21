@@ -1,42 +1,71 @@
-import React from "react";
 import styles from "./About.module.css";
 
-import { getImageUrl } from "../../utilis";
-
 export const About = () => {
+  const highlights = [
+    {
+      title: "Databricks engineering",
+      text: "Hands-on with Databricks, Delta Lake, PySpark, and Spark SQL for modernization, medallion architecture, and durable production pipelines.",
+    },
+    {
+      title: "Cloud data platforms",
+      text: "Comfortable across Azure and AWS data services including ADF, ADLS Gen2, Glue, Athena, Redshift, and Docker-based local environments.",
+    },
+    {
+      title: "Pipeline-first projects",
+      text: "Recent GitHub work leans toward event streaming, ETL orchestration, and analytics systems rather than one-off UI demos.",
+    },
+  ];
+
+  const workingStyle = [
+    "Prefer repeatable orchestration over manual fixes.",
+    "Build validation into the pipeline, not after the incident.",
+    "Optimize for observability, maintainability, and cost awareness.",
+  ];
+
   return (
     <section className={styles.container} id="about">
-      <h2 className={styles.title}>About</h2>
+      <div className={styles.header}>
+        <p className={styles.eyebrow}>About</p>
+        <h2 className={styles.title}>Focused on data workflows that stay clean, scalable, and easy to operate.</h2>
+      </div>
+
       <div className={styles.content}>
-        <img
-          src={getImageUrl("about/aboutImage.png")}
-          alt="Me sitting with a laptop"
-          className={styles.aboutImage}
-        />
+        <div className={styles.copyPanel}>
+          <div className={styles.copyBlock}>
+            <span className={styles.panelLabel}>Focus</span>
+            <p>
+              Current work is centered on Databricks migration, PySpark
+              development, Delta Lake workflows, and validation-first data
+              pipelines.
+            </p>
+            <p>
+              The portfolio focuses on cloud ETL, orchestration, and practical
+              engineering systems rather than generic showcase projects.
+            </p>
+          </div>
+
+          <div className={styles.statementCard}>
+            <span className={styles.statementLabel}>working_style.sh</span>
+            <div className={styles.statementLines}>
+              {workingStyle.map((item) => (
+                <p key={item}>
+                  <span>$</span> {item}
+                </p>
+              ))}
+            </div>
+          </div>
+        </div>
+
         <ul className={styles.aboutItems}>
-          <li className={styles.aboutItem}>
-            <img src={getImageUrl("about/cursorIcon.png")} alt="cursorIcon" />
-            <div className={styles.aboutItemText}>
-              <h3>Data Engineer</h3>
-              <p>
-                Experienced Data Engineer at Vitispro, skilled in web scraping
-                and NLP projects.
-              </p>
-            </div>
-          </li>
-          <li className={styles.aboutItem}>
-            <img src={getImageUrl("about/serverIcon.png")} alt="serverIcon" />
-            <div className={styles.aboutItemText}>
-              <h3>Data Analyst</h3>
-              <p>
-                Expertise in Python, SQL, Streamlit, and Power BI, with a focus
-                on data analysis, data science, and machine learning. Known for
-                Strong analytical skills, passionate about utilizing data to
-                inform decisions and extract actionable insights in the
-                corporate sphere.
-              </p>
-            </div>
-          </li>
+          {highlights.map((item, index) => (
+            <li key={item.title} className={styles.aboutItem}>
+              <span className={styles.indexMarker}>0{index + 1}</span>
+              <div className={styles.aboutItemText}>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </div>
+            </li>
+          ))}
         </ul>
       </div>
     </section>

@@ -1,12 +1,27 @@
 [
   {
     "role": "Data Engineer",
-    "organisation": "Vitispro",
-    "startDate": "May, 2023",
-    "endDate": "Nov, 2023",
+    "organisation": "DAETL Solutions",
+    "startDate": "Jun, 2025",
+    "endDate": "Present",
+    "summary": "Working on Azure Databricks, PySpark, Delta Lake, and validation-first pipeline delivery.",
     "experiences": [
-      "Bulk data collection using APIs",
-      "Reduced cost by 50% with zero-shot classification"
+      "Migrated legacy Informatica workflows into Azure Databricks pipelines using PySpark, Spark SQL, Delta Lake, and ADLS Gen2 with Medallion architecture.",
+      "Orchestrated end-to-end data movement with Azure Data Factory and tuned Spark jobs using partitioning, caching, and join optimization.",
+      "Built a Databricks data validation framework for row counts, column checks, and business-rule validation to improve data integrity."
+    ],
+    "imageSrc": "history/vitispro.png"
+  },
+  {
+    "role": "Data Engineer",
+    "organisation": "VITISPRO LLC",
+    "startDate": "Apr, 2023",
+    "endDate": "Nov, 2023",
+    "summary": "Worked on cloud migration, API-driven ingestion, and AWS-focused data workflows.",
+    "experiences": [
+      "Migrated key workloads from GCP to AWS and reduced project expenses by 55% while improving cloud resource management.",
+      "Automated bulk data collection for Eurostat and Comtrade through API integrations, improving retrieval speed by 40%.",
+      "Expanded image extraction support to 5 file types, including PNG and SVG, to increase data availability for analysis."
     ],
     "imageSrc": "history/vitispro.png"
   },
@@ -15,7 +30,11 @@
     "organisation": "BCS Infallible Technology",
     "startDate": "Jun, 2021",
     "endDate": "Aug, 2021",
-    "experiences": ["Worked on CafeLink project", "Designed the Admin panel"],
+    "summary": "Contributed to product delivery and admin-panel development during internship work.",
+    "experiences": [
+      "Worked on the CafeLink product as part of the application team.",
+      "Designed and shipped the admin panel for internal operations."
+    ],
     "imageSrc": "history/bcs.png"
   }
 ]

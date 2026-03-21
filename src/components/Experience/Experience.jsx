@@ -1,55 +1,95 @@
-import React from "react";
 import skills from "../../data/skills.json";
-
 import history from "../../data/history.json";
-import { getImageUrl } from "../../utilis";
-
 import styles from "./Experience.module.css";
 
+const stackGroups = [
+  {
+    title: "Lakehouse",
+    items: ["Databricks", "PySpark", "Delta Lake", "Apache Spark", "ADLS Gen2"],
+  },
+  {
+    title: "Orchestration",
+    items: ["Airflow", "Kafka", "Azure Data Factory", "AWS Glue", "Docker"],
+  },
+  {
+    title: "Query + Storage",
+    items: [
+      "Athena",
+      "Redshift",
+      "SQL",
+      "PostgreSQL",
+      "MongoDB",
+      "Power BI",
+      "Python",
+    ],
+  },
+];
+
 export const Experience = () => {
+  const groupedSkills = stackGroups.map((group) => ({
+    ...group,
+    skills: skills.filter((skill) => group.items.includes(skill.title)),
+  }));
+
   return (
     <section className={styles.container} id="experience">
-      <h2 className={styles.title}>Experience</h2>
+      <div className={styles.sectionHeading}>
+        <p className={styles.eyebrow}>Experience</p>
+        <h2 className={styles.title}>Career progression and core stack.</h2>
+      </div>
+
       <div className={styles.content}>
-        <div className={styles.skills}>
-          {skills.map((skill, id) => {
-            return (
-              <div key={id} className={styles.skill}>
-                <div className={styles.skillImageContainer}>
-                  <img
-                    src={getImageUrl(skill.imageSrc)}
-                    alt={skill.title}
-                    // width="50px"
-                    // height="50px"
-                  />
+        <div className={styles.stackPanel}>
+          <div className={styles.stackIntro}>
+            <span className={styles.panelLabel}>core_stack</span>
+            <h3>Databricks, Spark, orchestration, and analytics tooling.</h3>
+          </div>
+
+          <div className={styles.skillGroups}>
+            {groupedSkills.map((group) => (
+              <div key={group.title} className={styles.skillGroup}>
+                <div className={styles.skillGroupHeader}>
+                  <span>{group.title}</span>
+                  <strong>{group.skills.length}</strong>
                 </div>
-                <p>{skill.title}</p>
+                <div className={styles.skillChips}>
+                  {group.skills.map((skill) => (
+                    <span key={skill.title} className={styles.skillChip}>
+                      {skill.title}
+                    </span>
+                  ))}
+                </div>
               </div>
-            );
-          })}
+            ))}
+          </div>
         </div>
+
         <ul className={styles.history}>
-          {history.map((historyItem, id) => {
-            return (
-              <li key={id} className={styles.historyItem}>
-                <img
-                  src={getImageUrl(historyItem.imageSrc)}
-                  alt={`${historyItem.organisation} Logo`}
-                />
-                <div className={styles.historyItemDetails}>
+          {history.map((historyItem, index) => (
+            <li
+              key={`${historyItem.organisation}-${historyItem.startDate}`}
+              className={styles.historyItem}
+            >
+              <span
+                className={`${styles.stageBadge} ${
+                  index === 0 ? styles.currentBadge : styles.previousBadge
+                }`}
+              >
+                {index === 0 ? "Current" : "Previous"}
+              </span>
+
+              <div className={styles.historyHead}>
+                <div className={styles.historyRole}>
                   <h3>{`${historyItem.role}, ${historyItem.organisation}`}</h3>
-                  <p>
-                    <i>{`${historyItem.startDate} - ${historyItem.endDate}`}</i>
+                  <p className={styles.historyDates}>
+                    {historyItem.startDate} - {historyItem.endDate}
                   </p>
-                  <ul>
-                    {historyItem.experiences.map((experience, id) => {
-                      return <li key={id}>{experience}</li>;
-                    })}
-                  </ul>
                 </div>
-              </li>
-            );
-          })}
+              </div>
+
+              <p className={styles.historySummary}>{historyItem.summary}</p>
+            </li>
+          ))}
         </ul>
       </div>
     </section>

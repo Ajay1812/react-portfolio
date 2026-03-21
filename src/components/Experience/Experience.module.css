@@ -1,166 +1,202 @@
 @import "../../vars.css";
 
 .container {
-  color: var(--color-text);
-  margin-top: 79px;
-  margin-left: 10%;
-  margin-right: 10%;
+  display: grid;
+  gap: 1.5rem;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
-.title {
-  margin-bottom: 50px;
-  color: var(--color-text);
-  font-size: 35px;
-  font-weight: 700;
-  letter-spacing: 1.75px;
+.sectionHeading {
+  display: grid;
+  gap: 0.65rem;
+  max-width: 44rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.eyebrow,
+.panelLabel,
+.skillGroupHeader,
+.historyDates {
+  font-family: var(--font-mono);
+}
+
+.eyebrow {
+  color: var(--color-accent);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
-.content {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  margin-top: 14px;
+.title {
+  max-width: 15ch;
+  font-size: clamp(2rem, 4.4vw, 3rem);
+  line-height: 1.04;
+  margin: 0 auto;
 }
 
-.skills {
-  width: 45%;
+.content {
+  display: grid;
+  grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+  gap: 1.2rem;
+}
+
+.stackPanel {
+  display: grid;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  background:
+    radial-gradient(circle at top right, var(--color-accent-tint), transparent 26%),
+    linear-gradient(180deg, var(--color-panel), var(--color-panel-alt));
+  box-shadow: var(--shadow-card);
+}
+
+.panelLabel {
+  color: var(--color-accent);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.stackIntro {
+  display: grid;
+  gap: 0.55rem;
+  text-align: center;
+}
+
+.stackIntro h3 {
+  font-size: 1.12rem;
+}
+
+.skillGroups {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.skillGroup {
+  display: grid;
+  gap: 0.8rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.skillGroup:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.skillGroupHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--color-muted);
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.skillGroupHeader strong {
+  color: var(--color-accent);
+}
+
+.skillChips {
   display: flex;
   flex-wrap: wrap;
-  gap: 37px;
+  gap: 0.6rem;
 }
 
-.skill {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 11px;
-}
-
-.skillImageContainer {
-  background-color: var(--color-secondary);
-  border-radius: 100%;
-  display: flex;
+.skillChip {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 110px;
-  height: 110px;
-}
-
-.skillImageContainer img {
-  width: 60px;
-}
-
-.skill p {
-  font-size: 18px;
-  font-family: var(--color-roboto);
-  font-weight: 500;
+  min-height: 3rem;
+  padding: 0.58rem 0.82rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: linear-gradient(180deg, var(--color-panel-alt), var(--color-panel-strong));
+  color: var(--color-muted-strong);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-align: center;
+  line-height: 1.1;
+  box-shadow: var(--glass-sheen);
 }
 
 .history {
-  width: 45%;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
+  display: grid;
+  gap: 1rem;
 }
 
 .historyItem {
-  display: flex;
-  flex-direction: row;
+  position: relative;
+  padding: 1.35rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  background:
+    radial-gradient(circle at top right, var(--color-accent-tint), transparent 22%),
+    linear-gradient(180deg, var(--color-panel), var(--color-panel-alt));
+  box-shadow: var(--shadow-card);
+}
+
+.stageBadge {
+  display: inline-flex;
   align-items: center;
-  gap: 17px;
-  border-radius: 10px;
-  padding: 24px;
-  /* background: #19376d; */
-  background: #19376d;
-  /* background: linear-gradient(90%, #19376d 0%, rgba(25, 25, 109, 0) 100%); */
-
-  background-image: linear-gradient(
-    90deg,
-    rgba(34, 46, 59, 0.42) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  background-size: 0 100%;
-  background-repeat: no-repeat;
-  transition: 0.4s;
+  justify-content: center;
+  width: fit-content;
+  margin-bottom: 0.85rem;
+  padding: 0.38rem 0.68rem;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
-.historyItem:hover {
-  background-size: 100% 100%;
+.currentBadge {
+  background: var(--color-accent-tint);
+  color: var(--color-accent-strong);
 }
 
-.history img {
-  width: 80px;
-  margin-right: 20px;
+.previousBadge {
+  background: linear-gradient(180deg, var(--color-panel-alt), var(--color-panel-strong));
+  color: var(--color-muted);
 }
 
-.historyItemDetails {
-  font-family: var(--font-roboto);
+.historyHead {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.historyItemDetails h3 {
-  font-size: 20px;
-  font-weight: 400;
+.historyRole {
+  display: grid;
+  gap: 0.25rem;
 }
 
-.historyItemDetails p {
-  font-size: 15px;
-  font-weight: 300;
-  text-align: left;
+.historyRole h3 {
+  font-size: 1.02rem;
 }
 
-.historyItemDetails ul {
-  text-indent: -28px;
-  margin-top: 6px;
-  list-style-position: inside;
-  font-size: 20px;
-  list-style-type: disc;
-  margin-left: 25px;
+.historyDates {
+  color: var(--color-muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-@media screen and (max-width: 830px) {
-  .container {
-    margin-left: 5%;
-    margin-right: 5%;
-  }
+.historySummary {
+  margin-top: 0.8rem;
+  color: var(--color-muted-strong);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
 
-  .title {
-    padding-top: 60px;
-  }
-
+@media screen and (max-width: 980px) {
   .content {
-    flex-direction: column;
-    align-items: center;
-    gap: 34px;
-  }
-  .skills {
-    width: 100%;
-    flex-direction: row;
-    justify-content: center;
-  }
-  .history {
-    width: 100%;
-    gap: 9px;
-  }
-  .skill {
-    gap: 2px;
-  }
-  .skillImageContainer {
-    width: 60px;
-    height: 60px;
-  }
-  .skillImageContainer img {
-    width: 40px;
-    height: 40px;
-  }
-  .skill p {
-    font-size: 12px;
-    font-family: var(--color-roboto);
-    font-weight: 200;
-    margin-top: 8px;
-  }
-  .historyItemDetails ul {
-    font-size: 15px;
-    text-indent: -20px;
+    grid-template-columns: 1fr;
   }
 }

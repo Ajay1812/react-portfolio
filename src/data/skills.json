@@ -1,46 +1,53 @@
 [
   {
-    "title": "Python",
-    "imageSrc": "skills/python.png"
+    "title": "Databricks"
   },
   {
-    "title": "PostgresSQL",
-    "imageSrc": "skills/PostgresSQL.png"
+    "title": "PySpark"
   },
   {
-    "title": "Power BI",
-    "imageSrc": "skills/powerbi.png"
+    "title": "Delta Lake"
   },
   {
-    "title": "Jupyter",
-    "imageSrc": "skills/Jupyter.png"
+    "title": "Apache Spark"
   },
   {
-    "title": "Pandas",
-    "imageSrc": "skills/Pandas.png"
+    "title": "Airflow"
   },
   {
-    "title": "NumPy",
-    "imageSrc": "skills/NumPy.png"
+    "title": "Kafka"
   },
   {
-    "title": "Scikit-Learn",
-    "imageSrc": "skills/ScikitL.png"
+    "title": "Azure Data Factory"
   },
   {
-    "title": "Git",
-    "imageSrc": "skills/Git.png"
+    "title": "ADLS Gen2"
   },
   {
-    "title": "HTML",
-    "imageSrc": "skills/html.png"
+    "title": "AWS Glue"
   },
   {
-    "title": "CSS",
-    "imageSrc": "skills/css.png"
+    "title": "Athena"
   },
   {
-    "title": "JavaScript",
-    "imageSrc": "skills/javascript.png"
+    "title": "Redshift"
+  },
+  {
+    "title": "Python"
+  },
+  {
+    "title": "SQL"
+  },
+  {
+    "title": "PostgreSQL"
+  },
+  {
+    "title": "MongoDB"
+  },
+  {
+    "title": "Docker"
+  },
+  {
+    "title": "Power BI"
   }
 ]

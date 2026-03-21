@@ -1,8 +1,92 @@
 @import "./vars.css";
 
-.App {
-  background-color: var(--color-bg);
+.app {
+  position: relative;
   width: 100%;
-  height: 100%;
-  overflow: hidden;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 20% 0%, var(--bg-glow), transparent 30%),
+    radial-gradient(circle at 82% 12%, var(--bg-glow-secondary), transparent 28%),
+    radial-gradient(circle at 50% 55%, var(--bg-glow-tertiary), transparent 34%),
+    var(--color-bg);
+}
+
+.gridLayer,
+.glowLayer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.gridLayer {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.86), transparent 96%);
+  opacity: 0.52;
+}
+
+.glowLayer {
+  background:
+    radial-gradient(circle at 18% 10%, var(--bg-orb), transparent 18%),
+    radial-gradient(circle at 82% 26%, var(--bg-orb-secondary), transparent 22%),
+    radial-gradient(circle at 50% 92%, var(--bg-orb-tertiary), transparent 24%);
+  filter: blur(16px);
+  opacity: 0.78;
+}
+
+:global(:root[data-theme="dark"]) .app {
+  background:
+    linear-gradient(180deg, rgba(18, 30, 48, 0.34), transparent 18%),
+    radial-gradient(circle at 18% 0%, var(--bg-glow), transparent 34%),
+    radial-gradient(circle at 84% 14%, var(--bg-glow-secondary), transparent 30%),
+    radial-gradient(circle at 54% 62%, var(--bg-glow-tertiary), transparent 34%),
+    linear-gradient(180deg, #0a1322 0%, var(--color-bg) 44%, #060c16 100%);
+}
+
+:global(:root[data-theme="dark"]) .gridLayer {
+  opacity: 0.46;
+}
+
+:global(:root[data-theme="dark"]) .glowLayer {
+  filter: blur(22px);
+  opacity: 0.72;
+}
+
+:global(:root[data-theme="light"]) .app {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.6), transparent 18%),
+    radial-gradient(circle at 18% 0%, var(--bg-glow), transparent 34%),
+    radial-gradient(circle at 86% 14%, var(--bg-glow-secondary), transparent 30%),
+    radial-gradient(circle at 52% 58%, var(--bg-glow-tertiary), transparent 36%),
+    linear-gradient(180deg, #fcf7ef 0%, var(--color-bg) 48%, #efe4d4 100%);
+}
+
+:global(:root[data-theme="light"]) .gridLayer {
+  opacity: 0.34;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.82), transparent 94%);
+}
+
+:global(:root[data-theme="light"]) .glowLayer {
+  filter: blur(22px);
+  opacity: 0.62;
+}
+
+.main {
+  position: relative;
+  z-index: 1;
+  width: var(--content-width);
+  margin: 0 auto;
+  padding: 2rem 0 6.5rem;
+  display: grid;
+  gap: 4.8rem;
+}
+
+@media screen and (max-width: 900px) {
+  .main {
+    padding-top: 1rem;
+    gap: 4rem;
+  }
 }

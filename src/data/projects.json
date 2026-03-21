@@ -1,26 +1,26 @@
 [
   {
-    "title": "Wallpaper Utility",
-    "imageSrc": "projects/wallpaper.jpeg",
-    "description": "Transform your device's wallpaper with ease using our Wallpaper Utility App, powered by Unsplash API and intuitive background removal.",
-    "skills": ["Python", "Unsplash API", "Streamlit"],
-    "demo": "https://wallpaper-utility.streamlit.app/",
-    "source": "https://github.com/Ajay1812/Wallpaper_utility.git"
+    "title": "CityFlux Event Streaming",
+    "imageSrc": "projects/cityFlux.png",
+    "description": "A real-time event pipeline built with Kafka and Spark to process vehicle, GPS, and weather streams with low-latency ingestion, AWS analytics integration, and Docker-based local environments.",
+    "skills": ["Kafka", "Apache Spark", "AWS Glue", "Athena", "Redshift", "Docker"],
+    "demo": "",
+    "source": "https://github.com/Ajay1812/CityFlux-Event-Streaming-using-kafka"
   },
   {
-    "title": "CO2 Emisson And Climate Change Dashboard",
-    "imageSrc": "projects/co2_emisson.gif",
-    "description": "Python-based application to visualize and analyze CO2 emissions and climate change data.",
-    "skills": ["Python", "Streamlit", "HvPlot"],
-    "demo": "https://www.example.com",
-    "source": "https://github.com/Ajay1812/Machine_Learning_Projects/tree/59a23370a49c619af27ecabcb6a0e45b21878355/Co2%20Dashboard"
+    "title": "RedditFlow Scalable ETL",
+    "imageSrc": "projects/redditETL.png",
+    "description": "A production-style Reddit ETL pipeline using Airflow and PySpark to move post data through S3, Glue, Athena, and Redshift for scalable analytics and more reliable ingestion.",
+    "skills": ["Airflow", "PySpark", "AWS S3", "Glue", "Athena", "Redshift"],
+    "demo": "",
+    "source": "https://github.com/Ajay1812/Reddit_DataEngineering"
   },
   {
-    "title": "Generate tags and articles using OpenAI API",
+    "title": "Airflow Docker Projects",
     "imageSrc": "projects/gpt_tags_article.jpg",
-    "description": "Generate tags and article for startup using ChatGPT",
-    "skills": ["Python", "OpenAPI", "Streamlit"],
-    "demo": "https://github.com/Ajay1812/Machine_Learning_Projects/tree/59a23370a49c619af27ecabcb6a0e45b21878355/Gen_Tags_Article_ChatGPT",
-    "source": "https://github.com/Ajay1812/Machine_Learning_Projects/tree/59a23370a49c619af27ecabcb6a0e45b21878355/Gen_Tags_Article_ChatGPT"
+    "description": "A Docker-first Airflow workspace for developing and testing orchestration projects locally, with a setup oriented toward repeatable data-pipeline experimentation.",
+    "skills": ["Airflow", "Docker", "Python", "ETL"],
+    "demo": "",
+    "source": "https://github.com/Ajay1812/airflow-docker-projects"
   }
 ]
