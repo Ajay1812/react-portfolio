@@ -87,6 +87,11 @@
   border: 1px solid var(--color-border);
   font-family: var(--font-mono);
   font-size: 0.78rem;
+  transition:
+    transform 130ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 130ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 130ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
 
 .primaryBtn {
@@ -107,7 +112,17 @@
 .secondaryBtn:hover,
 .primaryBtn:focus-visible,
 .secondaryBtn:focus-visible {
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.primaryBtn:hover,
+.primaryBtn:focus-visible {
+  filter: saturate(1.08);
+}
+
+.secondaryBtn:hover,
+.secondaryBtn:focus-visible {
+  box-shadow: 0 14px 26px var(--color-accent-tint);
 }
 
 .commandHint {
@@ -139,6 +154,16 @@
   color: var(--color-muted-strong);
   font-size: 0.74rem;
   box-shadow: var(--glass-sheen);
+  transition:
+    transform 120ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 120ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 120ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.focusChip:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-card);
 }
 
 .metaGrid {
@@ -156,6 +181,14 @@
   box-shadow: var(--shadow-card);
   position: relative;
   overflow: hidden;
+  transition:
+    transform 140ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 140ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.metaCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
 }
 
 .metaCard::before {
