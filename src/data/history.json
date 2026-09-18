@@ -2,9 +2,9 @@
   {
     "role": "Data Engineer",
     "organisation": "DAETL Solutions",
-    "startDate": "Jun, 2025",
-    "endDate": "Present",
-    "summary": "Working on Azure Databricks, PySpark, Delta Lake, and validation-first pipeline delivery.",
+    "startDate": "Mar, 2025",
+    "endDate": "Mar, 2026",
+    "summary": "Worked on Azure Databricks, PySpark, Delta Lake, and validation-first pipeline delivery.",
     "experiences": [
       "Migrated legacy Informatica workflows into Azure Databricks pipelines using PySpark, Spark SQL, Delta Lake, and ADLS Gen2 with Medallion architecture.",
       "Orchestrated end-to-end data movement with Azure Data Factory and tuned Spark jobs using partitioning, caching, and join optimization.",

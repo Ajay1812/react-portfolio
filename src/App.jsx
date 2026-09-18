@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import style from "./App.module.css";
 import { About } from "./components/About/About";
+import { Blog } from "./components/Blog/Blog";
 import { Contact } from "./components/Contact/Contact";
 import { Experience } from "./components/Experience/Experience";
 import { Hero } from "./components/Hero/Hero";
@@ -34,9 +35,6 @@ function App() {
 
   return (
     <div className={style.app}>
-      <div className={style.gridLayer} aria-hidden="true" />
-      <div className={style.glowLayer} aria-hidden="true" />
-
       <Navbar
         theme={theme}
         onToggleTheme={() =>
@@ -51,6 +49,7 @@ function App() {
         <About />
         <Experience />
         <Projects />
+        <Blog />
       </main>
 
       <Contact />

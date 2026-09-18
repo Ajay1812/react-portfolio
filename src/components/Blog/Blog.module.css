@@ -2,20 +2,17 @@
 
 .container {
   display: grid;
-  grid-template-columns: 2.4rem minmax(0, 1fr);
-  gap: 1.2rem;
+  gap: 1.6rem;
+}
+
+.title {
+  font-size: clamp(1.7rem, 3.4vw, 2.2rem);
+}
+
+.entry {
   padding: 1.6rem 0;
   border-top: 1px solid var(--color-line);
-}
-
-.index {
-  font-family: var(--font-mono);
-  color: var(--color-muted);
-  font-size: 0.86rem;
-  padding-top: 0.15rem;
-}
-
-.body {
+  border-bottom: 1px solid var(--color-line);
   display: grid;
   gap: 0.65rem;
 }
@@ -28,23 +25,18 @@
   gap: 0.4rem 1.2rem;
 }
 
-.title {
+.entryTitle {
   font-size: 1.14rem;
 }
 
-.links {
-  display: flex;
-  gap: 1rem;
-}
-
-.links a {
+.head a {
   color: var(--color-accent);
   font-size: 0.9rem;
   border-bottom: 1px solid transparent;
 }
 
-.links a:hover,
-.links a:focus-visible {
+.head a:hover,
+.head a:focus-visible {
   border-color: var(--color-accent);
 }
 
@@ -53,10 +45,4 @@
   color: var(--color-ink-soft);
   font-size: 0.98rem;
   line-height: 1.65;
-}
-
-.skills {
-  color: var(--color-muted);
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
 }

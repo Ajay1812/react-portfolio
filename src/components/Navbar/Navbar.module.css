@@ -4,194 +4,101 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  padding-top: 1rem;
+  background: var(--color-paper);
 }
 
 .navbar {
-  position: relative;
-  overflow: hidden;
   width: var(--content-width);
   margin: 0 auto;
-  padding: 1rem 1.2rem;
-  border: 1px solid var(--color-border);
-  border-radius: 999px;
-  background:
-    linear-gradient(180deg, var(--color-panel), var(--color-panel-alt));
-  backdrop-filter: blur(18px);
-  box-shadow: var(--shadow-card);
+  padding: 1.3rem 0;
+  border-bottom: 1px solid var(--color-line);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
 }
 
-.navbar::before {
-  content: "";
-  position: absolute;
-  inset: 1px;
-  border-radius: inherit;
-  border: 1px solid var(--glass-border);
-  pointer-events: none;
-}
-
 .brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.7rem;
-  min-width: 0;
-  position: relative;
-  z-index: 1;
-}
-
-.brandPrompt,
-.brandSuffix {
-  font-family: var(--font-mono);
-}
-
-.brandPrompt {
-  padding: 0.5rem 0.75rem;
-  border: 1px solid var(--color-border);
-  border-radius: 999px;
-  color: var(--color-accent);
-  background:
-    linear-gradient(135deg, var(--color-accent-tint), transparent 70%),
-    var(--color-panel-strong);
-  font-size: 0.78rem;
-  box-shadow: var(--glass-sheen);
-}
-
-.brandSuffix {
-  color: var(--color-muted-strong);
-  font-size: 0.86rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-ink);
 }
 
 .actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.6rem;
   margin-left: auto;
-  position: relative;
-  z-index: 1;
 }
 
 .links {
   display: flex;
   align-items: center;
-  gap: 1.1rem;
+  gap: 1.4rem;
 }
 
 .links a {
-  position: relative;
-  color: var(--color-muted);
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  text-transform: lowercase;
-}
-
-.links a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -0.35rem;
-  width: 100%;
-  height: 1px;
-  transform: scaleX(0);
-  transform-origin: left;
-  background: var(--color-accent);
-  transition: transform var(--transition-base);
+  color: var(--color-ink-soft);
+  font-size: 0.88rem;
 }
 
 .links a:hover,
 .links a:focus-visible {
-  color: var(--color-heading);
-}
-
-.links a:hover::after,
-.links a:focus-visible::after {
-  transform: scaleX(1);
+  color: var(--color-accent);
 }
 
 .controls {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1.4rem;
 }
 
-.themeButton,
-.resumeLink,
-.menuButton {
-  border: 1px solid var(--color-border);
-  border-radius: 999px;
-  background: linear-gradient(180deg, var(--color-panel-alt), var(--color-panel-strong));
-  padding: 0.72rem 0.95rem;
-  font-family: var(--font-mono);
-  font-size: 0.74rem;
-  box-shadow: var(--glass-sheen);
+.resumeLink {
+  color: var(--color-ink-soft);
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+.resumeLink:hover,
+.resumeLink:focus-visible {
+  color: var(--color-accent);
 }
 
 .themeButton {
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
-  color: var(--color-heading);
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-line);
+  color: var(--color-ink-soft);
 }
 
-.themeDot {
-  width: 0.65rem;
-  height: 0.65rem;
-  border-radius: 999px;
-  background: linear-gradient(
-    135deg,
-    var(--color-warning) 0%,
-    var(--color-accent) 100%
-  );
-  box-shadow: 0 0 0 0.25rem var(--color-accent-tint);
+.themeButton svg {
+  width: 1rem;
+  height: 1rem;
+  fill: currentColor;
 }
 
 .themeButton:hover,
-.themeButton:focus-visible,
-.resumeLink:hover,
-.resumeLink:focus-visible,
-.menuButton:hover,
-.menuButton:focus-visible {
-  border-color: var(--color-border-strong);
-  transform: translateY(-1px);
-}
-
-.resumeLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  color: var(--color-heading);
-}
-
-.resumeIcon {
-  display: inline-flex;
-  width: 0.95rem;
-  height: 0.95rem;
-  flex-shrink: 0;
-}
-
-.resumeIcon svg {
-  width: 100%;
-  height: 100%;
-  fill: currentColor;
+.themeButton:focus-visible {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background: var(--color-accent-soft);
 }
 
 .menuButton {
   display: none;
-  color: var(--color-muted-strong);
+  color: var(--color-ink-soft);
+  font-size: 0.88rem;
 }
 
-@media screen and (max-width: 900px) {
-  .wrapper {
-    padding-top: 0.85rem;
-  }
-
+@media screen and (max-width: 700px) {
   .navbar {
-    border-radius: 28px;
+    padding: 1.1rem 0;
     flex-wrap: wrap;
-    align-items: flex-start;
   }
 
   .menuButton {
@@ -203,8 +110,11 @@
     display: none;
     width: 100%;
     flex-direction: column;
-    align-items: stretch;
-    padding-top: 0.35rem;
+    align-items: flex-start;
+    gap: 1rem;
+    padding-top: 1.2rem;
+    margin-top: 1rem;
+    border-top: 1px solid var(--color-line);
   }
 
   .actionsOpen {
@@ -215,28 +125,7 @@
   .controls {
     width: 100%;
     flex-direction: column;
-    align-items: stretch;
-  }
-
-  .links {
-    gap: 0.4rem;
-  }
-
-  .links a {
-    display: block;
-    padding: 0.85rem 1rem;
-    border: 1px solid var(--color-border);
-    border-radius: 16px;
-    background: linear-gradient(180deg, var(--color-panel-alt), var(--color-panel-strong));
-  }
-
-  .links a::after {
-    display: none;
-  }
-
-  .themeButton,
-  .resumeLink {
-    justify-content: center;
-    width: 100%;
+    align-items: flex-start;
+    gap: 0.9rem;
   }
 }

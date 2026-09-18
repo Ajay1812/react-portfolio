@@ -12,7 +12,7 @@ const stackGroups = [
     items: ["Airflow", "Kafka", "Azure Data Factory", "AWS Glue", "Docker"],
   },
   {
-    title: "Query + Storage",
+    title: "Query + storage",
     items: [
       "Athena",
       "Redshift",
@@ -33,64 +33,42 @@ export const Experience = () => {
 
   return (
     <section className={styles.container} id="experience">
-      <div className={styles.sectionHeading}>
-        <p className={styles.eyebrow}>Experience</p>
-        <h2 className={styles.title}>Career progression and core stack.</h2>
-      </div>
+      <h2 className={styles.title}>Experience</h2>
 
-      <div className={styles.content}>
-        <div className={styles.stackPanel}>
-          <div className={styles.stackIntro}>
-            <span className={styles.panelLabel}>core_stack</span>
-            <h3>Databricks, Spark, orchestration, and analytics tooling.</h3>
-          </div>
-
-          <div className={styles.skillGroups}>
-            {groupedSkills.map((group) => (
-              <div key={group.title} className={styles.skillGroup}>
-                <div className={styles.skillGroupHeader}>
-                  <span>{group.title}</span>
-                  <strong>{group.skills.length}</strong>
-                </div>
-                <div className={styles.skillChips}>
-                  {group.skills.map((skill) => (
-                    <span key={skill.title} className={styles.skillChip}>
-                      {skill.title}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <ul className={styles.history}>
-          {history.map((historyItem, index) => (
-            <li
-              key={`${historyItem.organisation}-${historyItem.startDate}`}
-              className={styles.historyItem}
-            >
-              <span
-                className={`${styles.stageBadge} ${
-                  index === 0 ? styles.currentBadge : styles.previousBadge
-                }`}
-              >
-                {index === 0 ? "Current" : "Previous"}
-              </span>
-
+      <ol className={styles.history}>
+        {history.map((historyItem, index) => (
+          <li
+            key={`${historyItem.organisation}-${historyItem.startDate}`}
+            className={styles.historyItem}
+          >
+            <span className={styles.historyIndex}>0{index + 1}</span>
+            <div className={styles.historyBody}>
               <div className={styles.historyHead}>
-                <div className={styles.historyRole}>
-                  <h3>{`${historyItem.role}, ${historyItem.organisation}`}</h3>
-                  <p className={styles.historyDates}>
-                    {historyItem.startDate} - {historyItem.endDate}
-                  </p>
-                </div>
+                <h3>
+                  {historyItem.role}, {historyItem.organisation}
+                </h3>
+                <p className={styles.historyDates}>
+                  {historyItem.startDate} &ndash; {historyItem.endDate}
+                </p>
               </div>
-
               <p className={styles.historySummary}>{historyItem.summary}</p>
-            </li>
+            </div>
+          </li>
+        ))}
+      </ol>
+
+      <div className={styles.stack}>
+        <h3 className={styles.stackHeading}>Core stack</h3>
+        <div className={styles.skillGroups}>
+          {groupedSkills.map((group) => (
+            <div key={group.title} className={styles.skillGroup}>
+              <span className={styles.skillGroupTitle}>{group.title}</span>
+              <p className={styles.skillList}>
+                {group.skills.map((skill) => skill.title).join(", ")}
+              </p>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </section>
   );
