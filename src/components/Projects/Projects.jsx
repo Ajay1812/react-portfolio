@@ -5,16 +5,13 @@ import { ProjectCard } from "./ProjectCard";
 export const Projects = () => {
   return (
     <section className={styles.container} id="projects">
-      <div className={styles.sectionHeading}>
-        <p className={styles.eyebrow}>Selected Work</p>
-        <h2 className={styles.title}>Projects that look and behave like engineering systems.</h2>
-      </div>
+      <h2 className={styles.title}>Projects</h2>
 
-      <div className={styles.projects}>
+      <ul className={styles.list}>
         {projects.map((project, id) => (
           <ProjectCard key={project.title} project={project} index={id + 1} />
         ))}
-      </div>
+      </ul>
     </section>
   );
 };

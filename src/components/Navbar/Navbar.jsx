@@ -1,12 +1,13 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import styles from "./Navbar.module.css";
-import resumeFile from "../../data/Ajay Kumar - Resume_V4.pdf";
+import resumeFile from "../../data/Ajay Kumar - Data Engineer.pdf";
 
 const navItems = [
   { label: "about", href: "#about" },
   { label: "experience", href: "#experience" },
   { label: "projects", href: "#projects" },
+  { label: "blog", href: "https://the-data-diary.vercel.app/", external: true },
   { label: "contact", href: "#contact" },
 ];
 
@@ -17,8 +18,7 @@ export const Navbar = ({ theme, onToggleTheme }) => {
     <header className={styles.wrapper}>
       <nav className={styles.navbar}>
         <a className={styles.brand} href="#home">
-          <span className={styles.brandPrompt}>~/ajay</span>
-          <span className={styles.brandSuffix}>data.engineer</span>
+          Ajay Kumar
         </a>
 
         <button
@@ -35,12 +35,28 @@ export const Navbar = ({ theme, onToggleTheme }) => {
           <ul className={styles.links} onClick={() => setMenuOpen(false)}>
             {navItems.map((item) => (
               <li key={item.label}>
-                <a href={item.href}>{item.label}</a>
+                <a
+                  href={item.href}
+                  target={item.external ? "_blank" : undefined}
+                  rel={item.external ? "noreferrer" : undefined}
+                >
+                  {item.label}
+                </a>
               </li>
             ))}
           </ul>
 
           <div className={styles.controls}>
+            <a
+              className={styles.resumeLink}
+              href={resumeFile}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setMenuOpen(false)}
+            >
+              Resume
+            </a>
+
             <button
               type="button"
               className={styles.themeButton}
@@ -49,25 +65,18 @@ export const Navbar = ({ theme, onToggleTheme }) => {
                 setMenuOpen(false);
               }}
               aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+              title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
             >
-              <span className={styles.themeDot} aria-hidden="true" />
-              <span>theme:{theme}</span>
-            </button>
-
-            <a
-              className={styles.resumeLink}
-              href={resumeFile}
-              target="_blank"
-              rel="noreferrer"
-              onClick={() => setMenuOpen(false)}
-            >
-              <span className={styles.resumeIcon} aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M7.75 3h6.38c.73 0 1.42.29 1.94.8l3.12 3.12c.52.52.81 1.22.81 1.95v9.38A2.75 2.75 0 0 1 17.25 21H7.75A2.75 2.75 0 0 1 5 18.25V5.75A2.75 2.75 0 0 1 7.75 3m0 2a.75.75 0 0 0-.75.75v12.5c0 .41.34.75.75.75h9.5c.41 0 .75-.34.75-.75V9.5h-3.75A2.25 2.25 0 0 1 12 7.25V5zm6.25.44v1.81c0 .14.11.25.25.25h1.81zM9.5 12h5a1 1 0 1 1 0 2h-5a1 1 0 1 1 0-2m0 3h5a1 1 0 1 1 0 2h-5a1 1 0 1 1 0-2" />
+              {theme === "dark" ? (
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 4.5V2m0 20v-2.5M4.5 12H2m20 0h-2.5M5.64 5.64 3.87 3.87m16.26 16.26-1.77-1.77M5.64 18.36l-1.77 1.77M20.13 3.87l-1.77 1.77M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10" />
                 </svg>
-              </span>
-              resume
-            </a>
+              ) : (
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20.74 14.51a8.5 8.5 0 0 1-10.25-10.25.75.75 0 0 0-.94-.94A10 10 0 1 0 21.68 15.45a.75.75 0 0 0-.94-.94" />
+                </svg>
+              )}
+            </button>
           </div>
         </div>
       </nav>

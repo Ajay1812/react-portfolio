@@ -1,7 +1,20 @@
 [
   {
+    "title": "Pipeplatter",
+    "description": "An end-to-end lakehouse pipeline that moves raw restaurant order and review data from S3 through Databricks Unity Catalog into dbt medallion layers, enriches reviews with an LLM, and serves it all through a Streamlit app with dashboards, semantic search, and text-to-SQL chat.",
+    "skills": ["Databricks", "dbt", "Airflow", "Groq", "Streamlit", "Python"],
+    "demo": "https://www.youtube.com/watch?v=1bEOjWSuvkU",
+    "source": "https://github.com/Ajay1812/pipeplatter"
+  },
+  {
+    "title": "SkyLake",
+    "description": "A flight delay and cancellation lakehouse built on PySpark and Apache Iceberg, with incremental manifest-based ingestion into S3, automatic Glue catalog registration, and Athena queries — orchestrated end to end with Airflow.",
+    "skills": ["PySpark", "Apache Iceberg", "AWS Glue", "Athena", "Airflow"],
+    "demo": "",
+    "source": "https://github.com/Ajay1812/SkyLake"
+  },
+  {
     "title": "CityFlux Event Streaming",
-    "imageSrc": "projects/cityFlux.png",
     "description": "A real-time event pipeline built with Kafka and Spark to process vehicle, GPS, and weather streams with low-latency ingestion, AWS analytics integration, and Docker-based local environments.",
     "skills": ["Kafka", "Apache Spark", "AWS Glue", "Athena", "Redshift", "Docker"],
     "demo": "",
@@ -9,7 +22,6 @@
   },
   {
     "title": "RedditFlow Scalable ETL",
-    "imageSrc": "projects/redditETL.png",
     "description": "A production-style Reddit ETL pipeline using Airflow and PySpark to move post data through S3, Glue, Athena, and Redshift for scalable analytics and more reliable ingestion.",
     "skills": ["Airflow", "PySpark", "AWS S3", "Glue", "Athena", "Redshift"],
     "demo": "",
@@ -17,7 +29,6 @@
   },
   {
     "title": "Airflow Docker Projects",
-    "imageSrc": "projects/gpt_tags_article.jpg",
     "description": "A Docker-first Airflow workspace for developing and testing orchestration projects locally, with a setup oriented toward repeatable data-pipeline experimentation.",
     "skills": ["Airflow", "Docker", "Python", "ETL"],
     "demo": "",
