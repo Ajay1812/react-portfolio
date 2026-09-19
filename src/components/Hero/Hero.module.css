@@ -13,19 +13,33 @@
 
 .container {
   display: grid;
-  gap: 1.6rem;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
   padding-top: 1rem;
+  align-items: start;
 }
 
 .container > * {
   animation: rise 560ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-.container > *:nth-child(1) { animation-delay: 0ms; }
-.container > *:nth-child(2) { animation-delay: 70ms; }
-.container > *:nth-child(3) { animation-delay: 140ms; }
-.container > *:nth-child(4) { animation-delay: 210ms; }
-.container > *:nth-child(5) { animation-delay: 280ms; }
+.copy {
+  display: grid;
+  gap: 1.6rem;
+}
+
+.copy > * {
+  animation: rise 560ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.copy > *:nth-child(1) { animation-delay: 0ms; }
+.copy > *:nth-child(2) { animation-delay: 70ms; }
+.copy > *:nth-child(3) { animation-delay: 140ms; }
+.copy > *:nth-child(4) { animation-delay: 210ms; }
+
+.focusPanel {
+  animation-delay: 280ms;
+}
 
 .profileRow {
   display: flex;
@@ -47,9 +61,9 @@
 }
 
 .title {
-  max-width: 18ch;
-  font-size: clamp(2.1rem, 5.4vw, 3.4rem);
-  line-height: 1.12;
+  max-width: 20ch;
+  font-size: clamp(2.1rem, 4.4vw, 3rem);
+  line-height: 1.14;
   font-weight: 600;
 }
 
@@ -94,24 +108,42 @@
   border-color: var(--color-accent);
 }
 
-.focusRow {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 0.9rem;
-  margin-top: 0.4rem;
-  padding-top: 1.4rem;
-  border-top: 1px solid var(--color-line);
+.focusPanel {
+  padding: 1.4rem 1.5rem;
+  border-radius: 10px;
+  background: var(--color-paper-soft);
+  display: grid;
+  gap: 0.85rem;
+  align-content: start;
 }
 
-.focusRow li {
+.focusPanelLabel {
   color: var(--color-muted);
-  font-family: var(--font-mono);
   font-size: 0.8rem;
 }
 
+.focusList {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.focusList li {
+  color: var(--color-ink-soft);
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .container > * {
+  .container > *,
+  .copy > * {
     animation: none;
+  }
+}
+
+@media screen and (min-width: 780px) {
+  .container {
+    grid-template-columns: minmax(0, 1fr) 15rem;
+    gap: 3rem;
   }
 }
 

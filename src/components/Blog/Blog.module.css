@@ -9,40 +9,68 @@
   font-size: clamp(1.7rem, 3.4vw, 2.2rem);
 }
 
-.entry {
-  padding: 1.6rem 0;
-  border-top: 1px solid var(--color-line);
-  border-bottom: 1px solid var(--color-line);
-  display: grid;
-  gap: 0.65rem;
-}
-
-.head {
+.card {
+  padding: 1.8rem 2rem;
+  border-radius: 10px;
+  background: var(--color-paper-soft);
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
-  gap: 0.4rem 1.2rem;
+  gap: 1.4rem;
+}
+
+.cardBody {
+  display: grid;
+  gap: 0.6rem;
+  max-width: 52ch;
 }
 
 .entryTitle {
-  font-size: 1.14rem;
-}
-
-.head a {
-  color: var(--color-accent);
-  font-size: 0.9rem;
-  border-bottom: 1px solid transparent;
-}
-
-.head a:hover,
-.head a:focus-visible {
-  border-color: var(--color-accent);
+  font-size: 1.2rem;
 }
 
 .description {
-  max-width: 62ch;
   color: var(--color-ink-soft);
   font-size: 0.98rem;
   line-height: 1.65;
+}
+
+.topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  margin-top: 0.2rem;
+}
+
+.topics li {
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.cta {
+  flex-shrink: 0;
+  color: var(--color-paper);
+  background: var(--color-accent);
+  padding: 0.7rem 1.15rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.94rem;
+  white-space: nowrap;
+}
+
+.cta:hover,
+.cta:focus-visible {
+  opacity: 0.88;
+}
+
+@media screen and (max-width: 560px) {
+  .card {
+    padding: 1.6rem;
+  }
+
+  .cta {
+    width: 100%;
+    text-align: center;
+  }
 }

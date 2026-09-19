@@ -53,18 +53,20 @@ export const Contact = () => {
         </div>
 
         <div className={styles.actions}>
-          <a className={styles.primaryLink} href="mailto:a.kumar01c@gmail.com">
+          <a className={styles.primaryBtn} href="mailto:a.kumar01c@gmail.com">
             Email me
           </a>
           <a
-            className={styles.primaryLink}
+            className={styles.secondaryLink}
             href={resumeFile}
             target="_blank"
             rel="noreferrer"
           >
             Resume
           </a>
+        </div>
 
+        <div className={styles.bottomRow}>
           <ul className={styles.socials}>
             {socialLinks.map((link) => (
               <li key={link.label}>
@@ -80,11 +82,11 @@ export const Contact = () => {
               </li>
             ))}
           </ul>
-        </div>
 
-        <p className={styles.meta}>
-          &copy; {new Date().getFullYear()} Ajay Kumar
-        </p>
+          <p className={styles.meta}>
+            &copy; {new Date().getFullYear()} Ajay Kumar
+          </p>
+        </div>
       </div>
     </footer>
   );

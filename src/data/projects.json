@@ -3,8 +3,15 @@
     "title": "Pipeplatter",
     "description": "An end-to-end lakehouse pipeline that moves raw restaurant order and review data from S3 through Databricks Unity Catalog into dbt medallion layers, enriches reviews with an LLM, and serves it all through a Streamlit app with dashboards, semantic search, and text-to-SQL chat.",
     "skills": ["Databricks", "dbt", "Airflow", "Groq", "Streamlit", "Python"],
-    "demo": "https://www.youtube.com/watch?v=1bEOjWSuvkU",
-    "source": "https://github.com/Ajay1812/pipeplatter"
+    "demo": "https://www.youtube.com/watch?v=_qPj_G656d8",
+    "demoType": "video",
+    "source": "https://github.com/Ajay1812/pipeplatter",
+    "images": [
+      "projects/pipeplatter-architecture.png",
+      "projects/pipeplatter-dashboard.png",
+      "projects/pipeplatter-sql-chat.png",
+      "projects/pipeplatter-airflow-dag.png"
+    ]
   },
   {
     "title": "SkyLake",
@@ -18,14 +25,16 @@
     "description": "A real-time event pipeline built with Kafka and Spark to process vehicle, GPS, and weather streams with low-latency ingestion, AWS analytics integration, and Docker-based local environments.",
     "skills": ["Kafka", "Apache Spark", "AWS Glue", "Athena", "Redshift", "Docker"],
     "demo": "",
-    "source": "https://github.com/Ajay1812/CityFlux-Event-Streaming-using-kafka"
+    "source": "https://github.com/Ajay1812/CityFlux-Event-Streaming-using-kafka",
+    "images": ["projects/cityflux-architecture.png"]
   },
   {
     "title": "RedditFlow Scalable ETL",
     "description": "A production-style Reddit ETL pipeline using Airflow and PySpark to move post data through S3, Glue, Athena, and Redshift for scalable analytics and more reliable ingestion.",
     "skills": ["Airflow", "PySpark", "AWS S3", "Glue", "Athena", "Redshift"],
     "demo": "",
-    "source": "https://github.com/Ajay1812/Reddit_DataEngineering"
+    "source": "https://github.com/Ajay1812/Reddit_DataEngineering",
+    "images": ["projects/redditflow-architecture.png"]
   },
   {
     "title": "Airflow Docker Projects",

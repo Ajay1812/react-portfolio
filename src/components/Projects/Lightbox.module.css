@@ -1,0 +1,84 @@
+@import "../../vars.css";
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+  background: rgba(10, 11, 10, 0.86);
+}
+
+.close {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.4rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  color: #f5f6f2;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.close:hover,
+.close:focus-visible {
+  background: rgba(245, 246, 242, 0.14);
+}
+
+.stage {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: min(1100px, 100%);
+}
+
+.image {
+  max-width: min(1000px, 82vw);
+  max-height: 78vh;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.nav {
+  flex-shrink: 0;
+  width: 2.6rem;
+  height: 2.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  color: #f5f6f2;
+  font-size: 1.6rem;
+  background: rgba(245, 246, 242, 0.1);
+}
+
+.nav:hover,
+.nav:focus-visible {
+  background: rgba(245, 246, 242, 0.2);
+}
+
+.counter {
+  color: #d7dad3;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+@media screen and (max-width: 600px) {
+  .stage {
+    gap: 0.5rem;
+  }
+
+  .nav {
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 1.3rem;
+  }
+}
