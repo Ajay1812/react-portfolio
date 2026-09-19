@@ -37,14 +37,17 @@
   gap: 1rem;
 }
 
-.links a {
+.links a,
+.previewButton {
   color: var(--color-accent);
   font-size: 0.9rem;
   border-bottom: 1px solid transparent;
 }
 
 .links a:hover,
-.links a:focus-visible {
+.links a:focus-visible,
+.previewButton:hover,
+.previewButton:focus-visible {
   border-color: var(--color-accent);
 }
 
@@ -60,3 +63,4 @@
   font-family: var(--font-mono);
   font-size: 0.8rem;
 }
+

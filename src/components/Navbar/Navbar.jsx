@@ -54,7 +54,7 @@ export const Navbar = ({ theme, onToggleTheme }) => {
               rel="noreferrer"
               onClick={() => setMenuOpen(false)}
             >
-              Resume
+              resume
             </a>
 
             <button

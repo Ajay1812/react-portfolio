@@ -9,8 +9,7 @@
       "Migrated legacy Informatica workflows into Azure Databricks pipelines using PySpark, Spark SQL, Delta Lake, and ADLS Gen2 with Medallion architecture.",
       "Orchestrated end-to-end data movement with Azure Data Factory and tuned Spark jobs using partitioning, caching, and join optimization.",
       "Built a Databricks data validation framework for row counts, column checks, and business-rule validation to improve data integrity."
-    ],
-    "imageSrc": "history/vitispro.png"
+    ]
   },
   {
     "role": "Data Engineer",
@@ -22,8 +21,7 @@
       "Migrated key workloads from GCP to AWS and reduced project expenses by 55% while improving cloud resource management.",
       "Automated bulk data collection for Eurostat and Comtrade through API integrations, improving retrieval speed by 40%.",
       "Expanded image extraction support to 5 file types, including PNG and SVG, to increase data availability for analysis."
-    ],
-    "imageSrc": "history/vitispro.png"
+    ]
   },
   {
     "role": "Full Stack Developer Intern",
@@ -34,7 +32,6 @@
     "experiences": [
       "Worked on the CafeLink product as part of the application team.",
       "Designed and shipped the admin panel for internal operations."
-    ],
-    "imageSrc": "history/bcs.png"
+    ]
   }
 ]

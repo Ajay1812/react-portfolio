@@ -52,6 +52,11 @@ export const Experience = () => {
                 </p>
               </div>
               <p className={styles.historySummary}>{historyItem.summary}</p>
+              <ul className={styles.historyDetails}>
+                {historyItem.experiences.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
             </div>
           </li>
         ))}
@@ -63,9 +68,11 @@ export const Experience = () => {
           {groupedSkills.map((group) => (
             <div key={group.title} className={styles.skillGroup}>
               <span className={styles.skillGroupTitle}>{group.title}</span>
-              <p className={styles.skillList}>
-                {group.skills.map((skill) => skill.title).join(", ")}
-              </p>
+              <ul className={styles.skillList}>
+                {group.skills.map((skill) => (
+                  <li key={skill.title}>{skill.title}</li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
