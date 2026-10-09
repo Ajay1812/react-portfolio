@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Portfolio — Before (CSS Modules)",
+    "output": "current-architecture.html",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    {
+      "id": "visitor",
+      "type": "external",
+      "label": "Visitor",
+      "sublabel": "Browser",
+      "pos": [
+        40,
+        240
+      ],
+      "size": [
+        120,
+        60
+      ]
+    },
+    {
+      "id": "vite",
+      "type": "cloud",
+      "label": "Vite 5",
+      "sublabel": "build + dev server",
+      "pos": [
+        230,
+        440
+      ],
+      "size": [
+        130,
+        60
+      ]
+    },
+    {
+      "id": "main",
+      "type": "frontend",
+      "label": "main.jsx",
+      "sublabel": "React 18 root",
+      "pos": [
+        230,
+        240
+      ],
+      "size": [
+        130,
+        60
+      ]
+    },
+    {
+      "id": "app",
+      "type": "frontend",
+      "label": "App.jsx",
+      "sublabel": "theme state",
+      "pos": [
+        430,
+        240
+      ],
+      "size": [
+        130,
+        60
+      ]
+    },
+    {
+      "id": "ls",
+      "type": "database",
+      "label": "localStorage",
+      "sublabel": "portfolio-theme",
+      "pos": [
+        430,
+        50
+      ],
+      "size": [
+        130,
+        60
+      ]
+    },
+    {
+      "id": "sections",
+      "type": "frontend",
+      "label": "Sections",
+      "sublabel": "Hero · About · Projects…",
+      "pos": [
+        630,
+        240
+      ],
+      "size": [
+        150,
+        60
+      ]
+    },
+    {
+      "id": "css",
+      "type": "frontend",
+      "label": "CSS Modules",
+      "sublabel": "vars.css tokens",
+      "pos": [
+        630,
+        50
+      ],
+      "size": [
+        150,
+        60
+      ]
+    },
+    {
+      "id": "data",
+      "type": "database",
+      "label": "JSON data",
+      "sublabel": "projects · history · skills",
+      "pos": [
+        630,
+        440
+      ],
+      "size": [
+        150,
+        60
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "v-main",
+      "from": "visitor",
+      "to": "main",
+      "label": "HTTPS",
+      "variant": "emphasis"
+    },
+    {
+      "id": "vite-main",
+      "from": "vite",
+      "to": "main",
+      "label": "bundles",
+      "fromSide": "top",
+      "toSide": "bottom",
+      "labelDy": -60
+    },
+    {
+      "id": "main-app",
+      "from": "main",
+      "to": "app"
+    },
+    {
+      "id": "app-ls",
+      "from": "app",
+      "to": "ls",
+      "label": "persist",
+      "fromSide": "top",
+      "toSide": "bottom",
+      "labelDy": -60
+    },
+    {
+      "id": "app-sections",
+      "from": "app",
+      "to": "sections"
+    },
+    {
+      "id": "css-sections",
+      "from": "css",
+      "to": "sections",
+      "label": "styles",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 60
+    },
+    {
+      "id": "data-sections",
+      "from": "data",
+      "to": "sections",
+      "label": "imports",
+      "fromSide": "top",
+      "toSide": "bottom",
+      "labelDy": -60
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Rendering",
+      "items": [
+        "Single-page React app, no router",
+        "Sections are anchor-linked"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Styling",
+      "items": [
+        "One CSS Module per component",
+        "Theme via data-theme tokens"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Motion",
+      "items": [
+        "Only a CSS keyframe in Hero"
+      ]
+    }
+  ]
+}

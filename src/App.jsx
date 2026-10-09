@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import style from "./App.module.css";
 import { About } from "./components/About/About";
-import { Blog } from "./components/Blog/Blog";
 import { Contact } from "./components/Contact/Contact";
 import { Experience } from "./components/Experience/Experience";
 import { Hero } from "./components/Hero/Hero";
@@ -26,6 +24,7 @@ const getInitialTheme = () => {
 
 function App() {
   const [theme, setTheme] = useState(getInitialTheme);
+  const [activeSkills, setActiveSkills] = useState([]);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -34,7 +33,7 @@ function App() {
   }, [theme]);
 
   return (
-    <div className={style.app}>
+    <div className="relative min-h-screen w-full bg-background">
       <Navbar
         theme={theme}
         onToggleTheme={() =>
@@ -44,15 +43,18 @@ function App() {
         }
       />
 
-      <main className={style.main}>
-        <Hero />
-        <About />
-        <Experience />
-        <Projects />
-        <Blog />
-      </main>
+      <main className="mx-auto w-[min(1080px,calc(100%-3rem))] pb-24">
+        <Hero activeSkills={activeSkills} onActivate={setActiveSkills} />
 
-      <Contact />
+        <div className="grid gap-x-16 gap-y-20 lg:grid-cols-[minmax(0,1fr)_15rem]">
+          <div className="grid min-w-0 gap-24">
+            <About />
+            <Projects theme={theme} activeSkills={activeSkills} onActivate={setActiveSkills} />
+            <Experience />
+          </div>
+          <Contact />
+        </div>
+      </main>
     </div>
   );
 }
