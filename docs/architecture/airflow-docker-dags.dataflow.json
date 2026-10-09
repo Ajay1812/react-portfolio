@@ -1,0 +1,355 @@
+{
+  "schema_version": 1,
+  "diagram_type": "dataflow",
+  "meta": {
+    "title": "Airflow Docker Projects: the five DAGs",
+    "output": "airflow-docker-dags.html",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "manga",
+        "label": "Manga",
+        "focus": [
+          "web",
+          "scrape",
+          "dl",
+          "pdf"
+        ],
+        "note": "Scrape chapters, download the images, convert each chapter to PDF."
+      },
+      {
+        "id": "toll-bash",
+        "label": "Toll data, bash",
+        "focus": [
+          "t_src",
+          "t_dl",
+          "t_tf",
+          "t_out"
+        ],
+        "note": "Download and untar, three extracts, merge, upper-case, then clean up."
+      },
+      {
+        "id": "toll-py",
+        "label": "Toll data, Python",
+        "focus": [
+          "p_src",
+          "p_dl",
+          "p_tf",
+          "p_out"
+        ],
+        "note": "The same flow written with requests, tarfile and pandas."
+      },
+      {
+        "id": "log-etl",
+        "label": "Web log ETL",
+        "focus": [
+          "w_src",
+          "w_ex",
+          "w_tf",
+          "w_out"
+        ],
+        "note": "Download the log, upper-case visitor ids with pandas, write capitalized.txt."
+      },
+      {
+        "id": "log-bash",
+        "label": "Web log, bash",
+        "focus": [
+          "l_src",
+          "l_dl",
+          "l_tf",
+          "l_out"
+        ],
+        "note": "Download, cut IPs, filter one address, tar the result."
+      }
+    ]
+  },
+  "stages": [
+    {
+      "label": "Source"
+    },
+    {
+      "label": "Ingest"
+    },
+    {
+      "label": "Transform"
+    },
+    {
+      "label": "Output"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "web",
+      "type": "external",
+      "label": "Webtoon site",
+      "sublabel": "chapters from config.py",
+      "stage": 0,
+      "row": 0
+    },
+    {
+      "id": "scrape",
+      "type": "backend",
+      "label": "Scrape",
+      "sublabel": "metadata to SQLite",
+      "stage": 1,
+      "row": 0,
+      "tag": "manga_scrapper"
+    },
+    {
+      "id": "dl",
+      "type": "backend",
+      "label": "Download",
+      "sublabel": "images, skips existing",
+      "stage": 2,
+      "row": 0
+    },
+    {
+      "id": "pdf",
+      "type": "database",
+      "label": "PDF",
+      "sublabel": "one per chapter",
+      "stage": 3,
+      "row": 0
+    },
+    {
+      "id": "t_src",
+      "type": "external",
+      "label": "IBM course data",
+      "sublabel": "tolldata.tgz",
+      "stage": 0,
+      "row": 1
+    },
+    {
+      "id": "t_dl",
+      "type": "backend",
+      "label": "Download + untar",
+      "sublabel": "bash: curl, tar",
+      "stage": 1,
+      "row": 1,
+      "tag": "unzip_data"
+    },
+    {
+      "id": "t_tf",
+      "type": "backend",
+      "label": "Extract, merge",
+      "sublabel": "cut · paste · upper",
+      "stage": 2,
+      "row": 1
+    },
+    {
+      "id": "t_out",
+      "type": "database",
+      "label": "transformed_data.csv",
+      "sublabel": "then cleanup",
+      "stage": 3,
+      "row": 1,
+      "width": 150
+    },
+    {
+      "id": "p_src",
+      "type": "external",
+      "label": "IBM course data",
+      "sublabel": "tolldata.tgz",
+      "stage": 0,
+      "row": 2
+    },
+    {
+      "id": "p_dl",
+      "type": "backend",
+      "label": "Download + untar",
+      "sublabel": "python: requests",
+      "stage": 1,
+      "row": 2,
+      "tag": "toll_data_python"
+    },
+    {
+      "id": "p_tf",
+      "type": "backend",
+      "label": "Extract, merge",
+      "sublabel": "pandas · upper",
+      "stage": 2,
+      "row": 2
+    },
+    {
+      "id": "p_out",
+      "type": "database",
+      "label": "transformed_data.csv",
+      "sublabel": "then cleanup",
+      "stage": 3,
+      "row": 2,
+      "width": 150
+    },
+    {
+      "id": "w_src",
+      "type": "external",
+      "label": "IBM course data",
+      "sublabel": "web-server-access-log",
+      "stage": 0,
+      "row": 3,
+      "width": 150
+    },
+    {
+      "id": "w_ex",
+      "type": "backend",
+      "label": "Extract",
+      "sublabel": "download log",
+      "stage": 1,
+      "row": 3,
+      "tag": "ETL_for_web_server_log"
+    },
+    {
+      "id": "w_tf",
+      "type": "backend",
+      "label": "Transform",
+      "sublabel": "pandas: upper visitorid",
+      "stage": 2,
+      "row": 3,
+      "width": 150
+    },
+    {
+      "id": "w_out",
+      "type": "database",
+      "label": "capitalized.txt",
+      "sublabel": "timestamp, visitor",
+      "stage": 3,
+      "row": 3
+    },
+    {
+      "id": "l_src",
+      "type": "external",
+      "label": "IBM course data",
+      "sublabel": "accesslog.txt",
+      "stage": 0,
+      "row": 4
+    },
+    {
+      "id": "l_dl",
+      "type": "backend",
+      "label": "Download",
+      "sublabel": "bash: curl",
+      "stage": 1,
+      "row": 4,
+      "tag": "process_web_log"
+    },
+    {
+      "id": "l_tf",
+      "type": "backend",
+      "label": "Extract, filter",
+      "sublabel": "cut · grep",
+      "stage": 2,
+      "row": 4
+    },
+    {
+      "id": "l_out",
+      "type": "database",
+      "label": "weblog.tar",
+      "sublabel": "then cleanup",
+      "stage": 3,
+      "row": 4
+    }
+  ],
+  "flows": [
+    {
+      "from": "web",
+      "to": "scrape",
+      "label": "pull",
+      "variant": "emphasis"
+    },
+    {
+      "from": "scrape",
+      "to": "dl",
+      "label": "image URLs"
+    },
+    {
+      "from": "dl",
+      "to": "pdf",
+      "label": "images"
+    },
+    {
+      "from": "t_src",
+      "to": "t_dl",
+      "label": "fetch"
+    },
+    {
+      "from": "t_dl",
+      "to": "t_tf",
+      "label": "3 extracts"
+    },
+    {
+      "from": "t_tf",
+      "to": "t_out",
+      "label": "merged"
+    },
+    {
+      "from": "p_src",
+      "to": "p_dl",
+      "label": "fetch"
+    },
+    {
+      "from": "p_dl",
+      "to": "p_tf",
+      "label": "3 extracts"
+    },
+    {
+      "from": "p_tf",
+      "to": "p_out",
+      "label": "merged"
+    },
+    {
+      "from": "w_src",
+      "to": "w_ex",
+      "label": "fetch"
+    },
+    {
+      "from": "w_ex",
+      "to": "w_tf",
+      "label": "log file"
+    },
+    {
+      "from": "w_tf",
+      "to": "w_out",
+      "label": "load"
+    },
+    {
+      "from": "l_src",
+      "to": "l_dl",
+      "label": "fetch"
+    },
+    {
+      "from": "l_dl",
+      "to": "l_tf",
+      "label": "accesslog"
+    },
+    {
+      "from": "l_tf",
+      "to": "l_out",
+      "label": "tar"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Manga",
+      "items": [
+        "scrape, download, convert to PDF",
+        "Metadata stored in SQLite"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Toll data",
+      "items": [
+        "Same flow in bash and in pandas",
+        "Three extracts merge into one CSV"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Web logs",
+      "items": [
+        "One DAG in pandas, one in bash",
+        "Both run daily"
+      ]
+    }
+  ]
+}

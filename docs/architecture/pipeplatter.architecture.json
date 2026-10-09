@@ -1,0 +1,301 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Pipeplatter: lakehouse architecture",
+    "output": "pipeplatter.html",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "ingest",
+        "label": "Ingest",
+        "focus": [
+          "s3",
+          "landing"
+        ],
+        "note": "Raw CSVs land in Unity Catalog with COPY INTO, which skips files it already loaded."
+      },
+      {
+        "id": "medallion",
+        "label": "Medallion",
+        "focus": [
+          "landing",
+          "bronze",
+          "silver",
+          "gold"
+        ],
+        "note": "dbt builds bronze, silver and gold in order."
+      },
+      {
+        "id": "enrich",
+        "label": "AI enrichment",
+        "focus": [
+          "silver",
+          "enrich",
+          "groq",
+          "gold"
+        ],
+        "note": "An LLM classifies review sentiment and topic, and the result feeds a gold review mart."
+      },
+      {
+        "id": "orchestrate",
+        "label": "Orchestration",
+        "focus": [
+          "airflow",
+          "landing",
+          "bronze"
+        ],
+        "note": "One daily Airflow DAG runs every step."
+      },
+      {
+        "id": "serve",
+        "label": "Serve",
+        "focus": [
+          "gold",
+          "app"
+        ],
+        "note": "Streamlit serves dashboards, text-to-SQL chat and RAG review search."
+      }
+    ]
+  },
+  "components": [
+    {
+      "id": "s3",
+      "type": "external",
+      "label": "S3 raw CSVs",
+      "sublabel": "orders · reviews · menu",
+      "pos": [
+        40,
+        250
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "landing",
+      "type": "database",
+      "label": "Landing",
+      "sublabel": "Unity Catalog · COPY INTO",
+      "pos": [
+        230,
+        250
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "bronze",
+      "type": "backend",
+      "label": "dbt bronze",
+      "sublabel": "views, 1:1 passthrough",
+      "pos": [
+        420,
+        250
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "silver",
+      "type": "backend",
+      "label": "dbt silver",
+      "sublabel": "typed, cleaned",
+      "pos": [
+        610,
+        250
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "gold",
+      "type": "database",
+      "label": "dbt gold",
+      "sublabel": "dims · facts · marts",
+      "pos": [
+        800,
+        250
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "app",
+      "type": "frontend",
+      "label": "Streamlit",
+      "sublabel": "dashboard · SQL chat · RAG",
+      "pos": [
+        990,
+        250
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "airflow",
+      "type": "backend",
+      "label": "Airflow 3",
+      "sublabel": "daily DAG, 12+ tasks",
+      "pos": [
+        325,
+        90
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "enrich",
+      "type": "backend",
+      "label": "enrich_reviews",
+      "sublabel": "sentiment + topic",
+      "pos": [
+        610,
+        430
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "groq",
+      "type": "external",
+      "label": "Groq LLM",
+      "sublabel": "classification",
+      "pos": [
+        420,
+        430
+      ],
+      "size": [
+        140,
+        60
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "c1",
+      "from": "s3",
+      "to": "landing",
+      "label": "COPY INTO",
+      "variant": "emphasis"
+    },
+    {
+      "id": "c2",
+      "from": "landing",
+      "to": "bronze"
+    },
+    {
+      "id": "c3",
+      "from": "bronze",
+      "to": "silver"
+    },
+    {
+      "id": "c4",
+      "from": "silver",
+      "to": "gold"
+    },
+    {
+      "id": "c5",
+      "from": "gold",
+      "to": "app",
+      "label": "serves"
+    },
+    {
+      "id": "c6",
+      "from": "airflow",
+      "to": "landing",
+      "label": "orchestrates",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 24
+    },
+    {
+      "id": "c7",
+      "from": "airflow",
+      "to": "bronze",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "c8",
+      "from": "silver",
+      "to": "enrich",
+      "label": "reviews",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 24
+    },
+    {
+      "id": "c9",
+      "from": "enrich",
+      "to": "groq",
+      "label": "classify",
+      "fromSide": "left",
+      "toSide": "right"
+    },
+    {
+      "id": "c10",
+      "from": "enrich",
+      "to": "gold",
+      "label": "review_enriched",
+      "variant": "dashed",
+      "fromSide": "right",
+      "toSide": "bottom"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Ingest",
+      "items": [
+        "S3 CSVs land in 7 Unity Catalog tables",
+        "COPY INTO tracks loaded files, so retries are safe"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Transform",
+      "items": [
+        "25-model dbt medallion warehouse",
+        "Tests run daily before AI enrichment"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Serve",
+      "items": [
+        "Streamlit dashboards, text-to-SQL and RAG chat",
+        "LLM enrichment feeds a gold review mart"
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Databricks · Unity Catalog",
+      "wraps": [
+        "landing",
+        "bronze",
+        "silver",
+        "gold"
+      ]
+    }
+  ]
+}

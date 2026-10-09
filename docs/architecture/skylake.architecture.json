@@ -1,0 +1,293 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "SkyLake: flight delay lakehouse",
+    "output": "skylake.html",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "ingest",
+        "label": "Ingest",
+        "focus": [
+          "kaggle",
+          "raw",
+          "spark"
+        ],
+        "note": "Raw CSVs reach S3 and PySpark reads them."
+      },
+      {
+        "id": "incremental",
+        "label": "Incremental runs",
+        "focus": [
+          "spark",
+          "manifest"
+        ],
+        "note": "A manifest on S3 limits each run to files not yet processed."
+      },
+      {
+        "id": "store",
+        "label": "Store",
+        "focus": [
+          "spark",
+          "parquet",
+          "iceberg",
+          "glue"
+        ],
+        "note": "Cleaned Parquet becomes an Iceberg table, registered in Glue."
+      },
+      {
+        "id": "query",
+        "label": "Query",
+        "focus": [
+          "iceberg",
+          "athena",
+          "nb"
+        ],
+        "note": "Athena queries the table directly and notebooks explore it."
+      },
+      {
+        "id": "schedule",
+        "label": "Schedule",
+        "focus": [
+          "airflow",
+          "spark"
+        ],
+        "note": "Airflow runs the daily DAG with retries and SLAs."
+      }
+    ]
+  },
+  "components": [
+    {
+      "id": "kaggle",
+      "type": "external",
+      "label": "Kaggle CSVs",
+      "sublabel": "2018 flight delays",
+      "pos": [
+        40,
+        250
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "raw",
+      "type": "cloud",
+      "label": "S3 raw",
+      "sublabel": "raw/*.csv",
+      "pos": [
+        230,
+        250
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "spark",
+      "type": "backend",
+      "label": "PySpark",
+      "sublabel": "reader · cleaner · writer",
+      "pos": [
+        420,
+        250
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "parquet",
+      "type": "cloud",
+      "label": "Parquet",
+      "sublabel": "processed/flights_cleaned",
+      "pos": [
+        610,
+        250
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "iceberg",
+      "type": "database",
+      "label": "Iceberg table",
+      "sublabel": "flights.flight_events",
+      "pos": [
+        800,
+        250
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "athena",
+      "type": "cloud",
+      "label": "Athena",
+      "sublabel": "SQL on Iceberg",
+      "pos": [
+        990,
+        250
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "airflow",
+      "type": "backend",
+      "label": "Airflow",
+      "sublabel": "daily DAG, retries, SLA",
+      "pos": [
+        420,
+        90
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "manifest",
+      "type": "database",
+      "label": "Manifest",
+      "sublabel": "S3 _manifest.json",
+      "pos": [
+        420,
+        430
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "glue",
+      "type": "cloud",
+      "label": "Glue catalog",
+      "sublabel": "table metadata",
+      "pos": [
+        800,
+        90
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "nb",
+      "type": "frontend",
+      "label": "Notebooks",
+      "sublabel": "ad hoc EDA",
+      "pos": [
+        990,
+        430
+      ],
+      "size": [
+        140,
+        60
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "c1",
+      "from": "kaggle",
+      "to": "raw",
+      "label": "upload",
+      "variant": "emphasis"
+    },
+    {
+      "id": "c2",
+      "from": "raw",
+      "to": "spark"
+    },
+    {
+      "id": "c3",
+      "from": "spark",
+      "to": "parquet"
+    },
+    {
+      "id": "c4",
+      "from": "parquet",
+      "to": "iceberg"
+    },
+    {
+      "id": "c5",
+      "from": "iceberg",
+      "to": "athena",
+      "label": "queries"
+    },
+    {
+      "id": "c6",
+      "from": "airflow",
+      "to": "spark",
+      "label": "runs",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 24
+    },
+    {
+      "id": "c7",
+      "from": "spark",
+      "to": "manifest",
+      "label": "new files only",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 24
+    },
+    {
+      "id": "c8",
+      "from": "iceberg",
+      "to": "glue",
+      "label": "registers",
+      "fromSide": "top",
+      "toSide": "bottom",
+      "labelDy": -54
+    },
+    {
+      "id": "c9",
+      "from": "athena",
+      "to": "nb",
+      "fromSide": "bottom",
+      "toSide": "top"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Ingest",
+      "items": [
+        "Raw CSVs in S3 are read incrementally",
+        "A manifest records which files were processed"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Store",
+      "items": [
+        "Cleaned data goes to Parquet, then Iceberg",
+        "Glue catalogs every commit, no crawler needed"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Run",
+      "items": [
+        "Dockerized Airflow, two tasks, daily",
+        "Failure callback, retries and SLAs"
+      ]
+    }
+  ]
+}

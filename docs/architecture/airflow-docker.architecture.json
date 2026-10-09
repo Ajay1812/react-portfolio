@@ -1,0 +1,257 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Airflow Docker Projects: runtime",
+    "output": "airflow-docker.html",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "schedule",
+        "label": "Schedule",
+        "focus": [
+          "dags",
+          "sched",
+          "pg"
+        ],
+        "note": "The scheduler parses the DAGs and keeps state in PostgreSQL."
+      },
+      {
+        "id": "queue",
+        "label": "Queue",
+        "focus": [
+          "sched",
+          "redis",
+          "worker"
+        ],
+        "note": "Tasks go through Redis to the Celery workers."
+      },
+      {
+        "id": "run",
+        "label": "Run",
+        "focus": [
+          "src",
+          "worker",
+          "data"
+        ],
+        "note": "Workers fetch public datasets and write results to data/."
+      },
+      {
+        "id": "monitor",
+        "label": "Monitor",
+        "focus": [
+          "ui",
+          "sched"
+        ],
+        "note": "The web UI on port 8080 shows runs and task state."
+      }
+    ]
+  },
+  "components": [
+    {
+      "id": "dags",
+      "type": "cloud",
+      "label": "dags/",
+      "sublabel": "5 DAGs, mounted",
+      "pos": [
+        40,
+        250
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "sched",
+      "type": "backend",
+      "label": "Scheduler",
+      "sublabel": "parses and schedules",
+      "pos": [
+        230,
+        250
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "redis",
+      "type": "messagebus",
+      "label": "Redis",
+      "sublabel": "Celery broker",
+      "pos": [
+        420,
+        250
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "worker",
+      "type": "backend",
+      "label": "Celery workers",
+      "sublabel": "run the tasks",
+      "pos": [
+        610,
+        250
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "data",
+      "type": "database",
+      "label": "data/",
+      "sublabel": "task outputs",
+      "pos": [
+        800,
+        250
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "ui",
+      "type": "frontend",
+      "label": "Web UI",
+      "sublabel": ":8080",
+      "pos": [
+        230,
+        90
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "pg",
+      "type": "database",
+      "label": "PostgreSQL 13",
+      "sublabel": "Airflow metadata",
+      "pos": [
+        230,
+        430
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "src",
+      "type": "external",
+      "label": "Public datasets",
+      "sublabel": "IBM course files · manga site",
+      "pos": [
+        800,
+        90
+      ],
+      "size": [
+        170,
+        60
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "docker-compose · CeleryExecutor",
+      "wraps": [
+        "sched",
+        "redis",
+        "worker",
+        "ui",
+        "pg"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "c1",
+      "from": "dags",
+      "to": "sched",
+      "label": "parsed by"
+    },
+    {
+      "id": "c2",
+      "from": "sched",
+      "to": "redis",
+      "label": "queues"
+    },
+    {
+      "id": "c3",
+      "from": "redis",
+      "to": "worker",
+      "label": "delivers"
+    },
+    {
+      "id": "c4",
+      "from": "worker",
+      "to": "data",
+      "label": "writes",
+      "variant": "emphasis"
+    },
+    {
+      "id": "c5",
+      "from": "ui",
+      "to": "sched",
+      "label": "monitor",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 24
+    },
+    {
+      "id": "c6",
+      "from": "sched",
+      "to": "pg",
+      "label": "state",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 24
+    },
+    {
+      "id": "c7",
+      "from": "src",
+      "to": "worker",
+      "label": "fetch",
+      "variant": "dashed",
+      "fromSide": "left",
+      "toSide": "top"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Runtime",
+      "items": [
+        "Apache Airflow 2.10 in Docker Compose",
+        "Webserver, scheduler and Celery workers"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Queue and state",
+      "items": [
+        "Redis brokers Celery tasks",
+        "PostgreSQL stores Airflow metadata"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Projects",
+      "items": [
+        "Five daily DAGs live in dags/",
+        "Outputs land in the mounted data/ folder"
+      ]
+    }
+  ]
+}
