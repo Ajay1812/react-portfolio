@@ -49,5 +49,26 @@
   },
   {
     "title": "Power BI"
+  },
+  {
+    "title": "dbt"
+  },
+  {
+    "title": "Snowflake"
+  },
+  {
+    "title": "Hadoop"
+  },
+  {
+    "title": "MySQL"
+  },
+  {
+    "title": "Cassandra"
+  },
+  {
+    "title": "Linux"
+  },
+  {
+    "title": "IBM Cognos"
   }
 ]
