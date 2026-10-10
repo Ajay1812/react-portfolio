@@ -2,19 +2,15 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { STAGES, STAGE_OF } from "@/data/stack";
-import { getImageUrl } from "../../utilis";
-import { Lightbox } from "./Lightbox";
 import { ProjectPreview } from "./ProjectPreview";
 
 export const ProjectCard = ({
-  project: { title, description, skills, demo, demoType, source, images, architecture, channel, story },
+  project: { title, description, outcome, skills, demo, demoType, source, architecture, channel, story },
   theme,
   activeSkills,
   onActivate,
 }) => {
-  const [lightboxIndex, setLightboxIndex] = useState(null);
   const [previewOpen, setPreviewOpen] = useState(false);
-  const imageUrls = (images ?? []).map((path) => getImageUrl(path));
 
   const dimmed = activeSkills.length > 0 && !skills.some((s) => activeSkills.includes(s));
   const lanes = [
@@ -24,57 +20,36 @@ export const ProjectCard = ({
 
   return (
     <li
-      className="group relative grid gap-6 border-t py-8 transition-opacity duration-200 last:border-b md:grid-cols-[minmax(0,1fr)_15rem] md:gap-10"
+      className={`group relative flex flex-col gap-4 rounded-lg border border-border bg-card p-5 transition-colors duration-200 hover:border-ring ${architecture ? "cursor-pointer" : ""}`}
       style={{ opacity: dimmed ? 0.4 : 1 }}
       onMouseEnter={() => onActivate(skills)}
       onMouseLeave={() => onActivate([])}
       onFocus={() => onActivate(skills)}
       onBlur={() => onActivate([])}
+      onClick={(event) => {
+        // Whole card opens the architecture preview; real links keep their own
+        // targets. The dialog renders in a React portal, so its clicks bubble
+        // back here — never let them re-open (that broke the close button).
+        if (!architecture) return;
+        if (event.target.closest("a, [role='dialog']")) return;
+        setPreviewOpen(true);
+      }}
     >
-      <div className="grid content-start gap-3">
-        <h3 className="text-[1.5rem] leading-tight group-hover:underline group-hover:decoration-silver group-hover:underline-offset-4">{title}</h3>
-        <p className="max-w-[62ch]">{description}</p>
-        <div className="-ml-3 flex flex-wrap items-center">
-          {architecture ? (
-            <Button
-              variant="link"
-              size="sm"
-              className="cursor-pointer after:absolute after:inset-0 after:content-['']"
-              onClick={() => setPreviewOpen(true)}
-            >
-              Preview architecture
-            </Button>
-          ) : null}
-          <Button asChild variant="link" size="sm" className="relative z-10">
-            <a href={source} target="_blank" rel="noreferrer">Code on GitHub</a>
-          </Button>
-          {imageUrls.length > 0 ? (
-            <Button variant="link" size="sm" className="relative z-10" onClick={() => setLightboxIndex(0)}>
-              View screenshots
-            </Button>
-          ) : null}
-          {channel ? (
-            <Button asChild variant="link" size="sm" className="relative z-10">
-              <a href={channel.href} target="_blank" rel="noreferrer">{channel.label}</a>
-            </Button>
-          ) : null}
-          {demo ? (
-            <Button asChild variant="link" size="sm" className="relative z-10">
-              <a href={demo} target="_blank" rel="noreferrer">
-                {demoType === "video" ? "Watch the demo" : "Open live site"}
-              </a>
-            </Button>
-          ) : null}
-        </div>
+      <div className="grid content-start gap-2.5">
+        <h3 className="font-mono text-[1.3rem] leading-tight group-hover:underline group-hover:decoration-2 group-hover:underline-offset-4"><span className="text-accent-foreground">$</span> {title}</h3>
+        <p className="text-[0.95rem]">{description}</p>
+        {outcome ? (
+          <p className="font-mono text-[0.9rem] text-muted-foreground"><span className="font-bold text-accent-foreground">[ok]</span> {outcome}</p>
+        ) : null}
       </div>
 
-      <dl className="grid content-start gap-3 text-[0.9rem]">
+      <dl className="grid content-start gap-2 border-t border-border pt-3.5 text-[0.85rem]">
         {lanes.map((lane) => (
           <div key={lane.id} className="flex gap-3">
-            <dt className="flex w-[4.6rem] shrink-0 items-center gap-2 font-display text-muted-foreground">
+            <dt className="flex w-[4.6rem] shrink-0 items-center gap-2 font-mono text-muted-foreground">
               <span
-                className="size-2 rounded-full"
-                style={{ background: lane.id === "tooling" ? "transparent" : `var(--${lane.id})`, border: lane.id === "tooling" ? "1.5px dashed var(--silver)" : "none" }}
+                className="size-2.5 shrink-0 rounded-[3px] border border-border"
+                style={{ background: lane.id === "tooling" ? "transparent" : `var(--${lane.id})`, borderStyle: lane.id === "tooling" ? "dashed" : "solid" }}
                 aria-hidden="true"
               />
               {lane.label}
@@ -83,6 +58,33 @@ export const ProjectCard = ({
           </div>
         ))}
       </dl>
+
+      <div className="mt-auto flex flex-wrap items-center gap-x-2 gap-y-1 pt-1">
+        {architecture ? (
+          <Button
+            size="sm"
+            className="cursor-pointer"
+            onClick={() => setPreviewOpen(true)}
+          >
+            Preview architecture
+          </Button>
+        ) : null}
+        <Button asChild variant="link" size="sm">
+          <a href={source} target="_blank" rel="noreferrer">Code on GitHub</a>
+        </Button>
+        {channel ? (
+          <Button asChild variant="link" size="sm">
+            <a href={channel.href} target="_blank" rel="noreferrer">{channel.label}</a>
+          </Button>
+        ) : null}
+        {demo ? (
+          <Button asChild variant="link" size="sm">
+            <a href={demo} target="_blank" rel="noreferrer">
+              {demoType === "video" ? "Watch the demo" : "Open live site"}
+            </a>
+          </Button>
+        ) : null}
+      </div>
 
       {architecture ? (
         <ProjectPreview
@@ -97,15 +99,6 @@ export const ProjectCard = ({
           demoType={demoType}
         />
       ) : null}
-
-      <Lightbox
-        images={imageUrls}
-        index={lightboxIndex ?? 0}
-        open={lightboxIndex !== null}
-        title={title}
-        onClose={() => setLightboxIndex(null)}
-        onNavigate={setLightboxIndex}
-      />
     </li>
   );
 };
@@ -114,11 +107,11 @@ ProjectCard.propTypes = {
   project: PropTypes.shape({
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
+    outcome: PropTypes.string,
     skills: PropTypes.arrayOf(PropTypes.string).isRequired,
     demo: PropTypes.string,
     demoType: PropTypes.oneOf(["video", "live"]),
     source: PropTypes.string.isRequired,
-    images: PropTypes.arrayOf(PropTypes.string),
     architecture: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.arrayOf(PropTypes.shape({ slug: PropTypes.string, label: PropTypes.string })),

@@ -8,16 +8,16 @@ import { ScrollTrigger, useGSAP } from "@/lib/gsap";
 import resumeFile from "../../data/Ajay Kumar - Data Engineer.pdf";
 
 const navItems = [
-  { label: "how I work", href: "#about" },
-  { label: "work", href: "#projects" },
-  { label: "experience", href: "#experience" },
-  { label: "contact", href: "#contact" },
+  { label: "./work", href: "#projects" },
+  { label: "./how-i-work", href: "#about" },
+  { label: "./experience", href: "#experience" },
+  { label: "./contact", href: "#contact" },
 ];
 
 const linkClass = (active) =>
   cn(
-    "font-display text-[0.92rem] transition-colors hover:text-foreground",
-    active ? "text-foreground underline decoration-2 underline-offset-8" : "text-body"
+    "font-mono text-[0.92rem] transition-colors hover:text-accent-foreground",
+    active ? "text-accent-foreground underline decoration-[2px] underline-offset-8" : "text-muted-foreground"
   );
 
 export const Navbar = ({ theme, onToggleTheme }) => {
@@ -77,9 +77,9 @@ export const Navbar = ({ theme, onToggleTheme }) => {
 
   return (
     <header ref={root} className="sticky top-0 z-50 bg-background">
-      <nav className="mx-auto flex w-[min(1080px,calc(100%-3rem))] items-center justify-between gap-4 border-b py-5 max-md:py-4">
-        <a href="#home" className="font-display text-[1.1rem] font-semibold tracking-[-0.02em] text-foreground">
-          Ajay Kumar
+      <nav className="mx-auto flex w-[min(1280px,calc(100%-2.5rem))] items-center justify-between gap-4 border-b border-border py-5 max-md:py-4">
+        <a href="#home" className="font-mono text-[1.02rem] font-bold tracking-tight text-foreground">
+          <span className="text-accent-foreground">~/</span>ajay-kumar
         </a>
 
         <div className="hidden items-center gap-6 md:flex">
@@ -88,9 +88,9 @@ export const Navbar = ({ theme, onToggleTheme }) => {
             href={resumeFile}
             target="_blank"
             rel="noreferrer"
-            className="font-display text-[0.92rem] text-body transition-colors hover:text-foreground"
+            className="rounded-md bg-primary px-3.5 py-1.5 font-mono text-[0.9rem] font-bold text-primary-foreground transition-opacity hover:opacity-85"
           >
-            resume
+            resume.pdf ↓
           </a>
           {themeButton}
         </div>
@@ -103,17 +103,17 @@ export const Navbar = ({ theme, onToggleTheme }) => {
                 <Menu />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-64">
-              <SheetTitle className="px-4 pt-4 font-display">Ajay Kumar</SheetTitle>
+            <SheetContent side="right" className="w-64 border-l border-border">
+              <SheetTitle className="px-4 pt-4 font-mono">~/ajay-kumar</SheetTitle>
               <SheetDescription className="sr-only">Site navigation</SheetDescription>
               <ul className="grid gap-4 px-4 text-base">{links(() => setMenuOpen(false))}</ul>
               <a
                 href={resumeFile}
                 target="_blank"
                 rel="noreferrer"
-                className="px-4 font-display text-[0.92rem] text-body hover:text-foreground"
+                className="px-4 font-mono text-[0.92rem] font-bold text-accent-foreground"
               >
-                resume
+                resume.pdf ↓
               </a>
             </SheetContent>
           </Sheet>

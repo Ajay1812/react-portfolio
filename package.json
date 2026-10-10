@@ -12,6 +12,7 @@
   "dependencies": {
     "@fontsource-variable/bricolage-grotesque": "^5.3.0",
     "@fontsource-variable/literata": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
     "@gsap/react": "^2.1.2",
     "@tailwindcss/vite": "^4.3.3",
     "class-variance-authority": "^0.7.1",

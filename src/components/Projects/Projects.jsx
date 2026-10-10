@@ -4,8 +4,8 @@ import { ProjectCard } from "./ProjectCard";
 
 export const Projects = ({ theme, activeSkills, onActivate }) => (
   <section id="projects" className="grid gap-8">
-    <h2 className="text-[clamp(1.7rem,3.4vw,2.3rem)]">Selected work</h2>
-    <ul className="grid">
+    <h2 className="font-mono text-[clamp(1.5rem,3vw,2.1rem)]"><span className="text-accent-foreground">##</span> selected_work</h2>
+    <ul className="grid gap-5 md:grid-cols-2">
       {projects.map((project) => (
         <ProjectCard
           key={project.title}

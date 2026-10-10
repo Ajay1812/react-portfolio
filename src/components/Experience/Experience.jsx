@@ -2,9 +2,9 @@ import skills from "../../data/skills.json";
 import history from "../../data/history.json";
 
 const stackGroups = [
-  { title: "Lakehouse", items: ["Databricks", "PySpark", "Delta Lake", "dbt", "Snowflake", "Apache Spark", "ADLS Gen2"] },
-  { title: "Orchestration and platform", items: ["Airflow", "Kafka", "Azure Data Factory", "AWS Glue", "Docker", "Linux"] },
-  { title: "Query and storage", items: ["Athena", "Redshift", "SQL", "PostgreSQL", "MySQL", "MongoDB", "Cassandra", "Hadoop", "Power BI", "IBM Cognos", "Python"] },
+  { title: "Primary stack", items: ["Databricks", "PySpark", "Delta Lake", "Apache Spark", "SQL", "Python", "Airflow", "Azure Data Factory", "ADLS Gen2"] },
+  { title: "Cloud and platform", items: ["AWS Glue", "Athena", "Redshift", "dbt", "Kafka", "Snowflake", "Docker", "Linux"] },
+  { title: "Also worked with", items: ["PostgreSQL", "MySQL", "MongoDB", "Cassandra", "Power BI", "Hadoop", "IBM Cognos"] },
 ];
 
 const certifications = [
@@ -22,13 +22,13 @@ export const Experience = () => {
 
   return (
     <section id="experience" className="grid gap-8">
-      <h2 className="text-[clamp(1.7rem,3.4vw,2.3rem)]">Experience</h2>
+      <h2 className="font-mono text-[clamp(1.5rem,3vw,2.1rem)]"><span className="text-accent-foreground">##</span> experience.log</h2>
 
-      <ol className="relative ml-[7px] grid gap-10 border-l border-input pl-8">
+      <ol className="relative ml-[7px] grid gap-10 border-l border-border pl-8">
         {history.map((item, index) => (
           <li key={`${item.organisation}-${item.startDate}`} className="relative grid gap-3">
             <span
-              className={`absolute -left-[39px] top-[0.55rem] size-3 rounded-full border-2 border-background ring-1 ring-input ${index === 0 ? "bg-foreground" : "bg-muted-foreground"}`}
+              className={`absolute -left-[38px] top-[0.5rem] size-3 rounded-[3px] border border-border ${index === 0 ? "bg-gold" : "bg-silver"}`}
               aria-hidden="true"
             />
             <div className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
@@ -49,7 +49,7 @@ export const Experience = () => {
         ))}
       </ol>
 
-      <div className="grid gap-4 border-t pt-8">
+      <div className="grid gap-4 border-t border-border pt-8">
         <h3 className="text-[1.15rem]">Core stack</h3>
         <dl className="grid gap-3 text-[0.95rem]">
           {groups.map((group) => (
@@ -61,7 +61,7 @@ export const Experience = () => {
         </dl>
       </div>
 
-      <div className="grid gap-4 border-t pt-8">
+      <div className="grid gap-4 border-t border-border pt-8">
         <h3 className="text-[1.15rem]">Education</h3>
         <p className="text-foreground">
           B.Tech in Computer Science Engineering, Hindustan College of Science

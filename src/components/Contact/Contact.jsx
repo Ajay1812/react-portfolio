@@ -42,25 +42,33 @@ const socialLinks = [
 ];
 
 export const Contact = () => (
-  <aside id="contact" className="grid content-start gap-5 border-t pt-8 lg:sticky lg:top-28 lg:self-start lg:border-t-0 lg:pt-2">
+  <aside id="contact" className="grid content-start gap-5 rounded-lg border border-border bg-card p-5 lg:sticky lg:top-28 lg:self-start">
     <img
       src={getImageUrl("hero/profile.png")}
       alt="Ajay Kumar"
-      className="size-16 rounded-full object-cover object-[center_24%]"
+      className="size-16 rounded-full border border-border object-cover object-[center_24%]"
     />
     <div className="grid gap-1.5">
-      <h2 className="text-[1.25rem]">Open to work</h2>
+      <h2 className="flex w-fit items-center gap-2 rounded-md border border-border bg-muted px-2.5 py-1 font-mono text-[1.05rem] text-foreground">
+        <span className="relative flex size-2.5" aria-hidden="true">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
+          <span className="relative inline-flex size-2.5 rounded-full bg-primary" />
+        </span>
+        status: open-to-work
+      </h2>
       <p className="text-[0.95rem]">
-        Data engineering, Databricks, Spark, and cloud pipeline roles.
+        Data Engineer and Analytics Engineer roles — Databricks, Spark and
+        cloud pipelines. Noida (hybrid / on-site) or remote across India.
+        Author, <em>Data Engineering Interview Prep</em>.
       </p>
     </div>
 
     <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
       <Button asChild>
-        <a href="mailto:a.kumar01c@gmail.com">Email me</a>
+        <a href="mailto:a.kumar01c@gmail.com">$ mail ajay</a>
       </Button>
       <Button asChild variant="link" className="px-0 text-body">
-        <a href={resumeFile} target="_blank" rel="noreferrer">Read the resume</a>
+        <a href={resumeFile} target="_blank" rel="noreferrer">resume.pdf ↓</a>
       </Button>
     </div>
 

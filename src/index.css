@@ -4,64 +4,69 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 :root,
-:root[data-theme="light"] {
-  --background: #ecf0f3;
-  --foreground: #121c26;
-  --card: #ecf0f3;
-  --card-foreground: #121c26;
-  --popover: #ecf0f3;
-  --popover-foreground: #121c26;
-  --primary: #121c26;
-  --primary-foreground: #ecf0f3;
-  --secondary: #e0e6eb;
-  --secondary-foreground: #121c26;
-  --muted: #e0e6eb;
-  --muted-foreground: #566676;
-  --accent: rgba(18, 28, 38, 0.07);
-  --accent-foreground: #121c26;
-  --destructive: #b3261e;
-  --border: rgba(18, 28, 38, 0.16);
-  --input: rgba(18, 28, 38, 0.3);
-  --ring: #121c26;
-  --body-text: #3a4856;
-  --radius: 0.375rem;
-  --bronze: #9a5a2e;
-  --silver: #6b7c8c;
-  --gold: #b58a1e;
-  --bronze-ink: #8a4e22;
-  --gold-ink: #7a5a08;
+:root[data-theme="dark"] {
+  /* Terminal theme (dev console): near-black green-tinted canvas, mono type,
+     terminal-green primary, amber secondary. */
+  --background: #0b0e0c;
+  --foreground: #eaffee;
+  --card: #10160f;
+  --card-foreground: #eaffee;
+  --popover: #10160f;
+  --popover-foreground: #eaffee;
+  --primary: #3dff73;
+  --primary-foreground: #06130a;
+  --secondary: #ffc93d;
+  --secondary-foreground: #171106;
+  --muted: #16211a;
+  --muted-foreground: #7ba389;
+  --accent: rgba(61, 255, 115, 0.12);
+  --accent-foreground: #3dff73;
+  --destructive: #ff6b61;
+  --border: #2c4a38;
+  --input: #2c4a38;
+  --ring: #3dff73;
+  --body-text: #9fd3ac;
+  --radius: 0.5rem;
+  --bronze: #ffc93d;
+  --silver: #7dd3fc;
+  --gold: #3dff73;
+  --bronze-ink: #ffc93d;
+  --gold-ink: #3dff73;
 }
 
-:root[data-theme="dark"] {
-  --background: #0e151d;
-  --foreground: #e6ecf1;
-  --card: #0e151d;
-  --card-foreground: #e6ecf1;
-  --popover: #16212c;
-  --popover-foreground: #e6ecf1;
-  --primary: #9db0c1;
-  --primary-foreground: #0e151d;
-  --secondary: #16212c;
-  --secondary-foreground: #e6ecf1;
-  --muted: #16212c;
-  --muted-foreground: #8b9bab;
-  --accent: rgba(157, 176, 193, 0.12);
-  --accent-foreground: #9db0c1;
-  --destructive: #f2b8b5;
-  --border: rgba(230, 236, 241, 0.16);
-  --input: rgba(230, 236, 241, 0.3);
-  --ring: #9db0c1;
-  --body-text: #b4c0cb;
-  --bronze: #d08a57;
-  --silver: #9db0c1;
-  --gold: #e3b64a;
-  --bronze-ink: #d08a57;
-  --gold-ink: #e3b64a;
+:root[data-theme="light"] {
+  /* Terminal, day shift: pale green paper, same console language. */
+  --background: #eef5ec;
+  --foreground: #12251a;
+  --card: #ffffff;
+  --card-foreground: #12251a;
+  --popover: #ffffff;
+  --popover-foreground: #12251a;
+  --primary: #16a34a;
+  --primary-foreground: #ffffff;
+  --secondary: #f5b921;
+  --secondary-foreground: #171106;
+  --muted: #e2eee0;
+  --muted-foreground: #4a6b57;
+  --accent: rgba(22, 163, 74, 0.1);
+  --accent-foreground: #16a34a;
+  --destructive: #b3261e;
+  --border: #9db8a4;
+  --input: #9db8a4;
+  --ring: #16a34a;
+  --body-text: #2e4a38;
+  --bronze: #d97706;
+  --silver: #0284c7;
+  --gold: #16a34a;
+  --bronze-ink: #b45309;
+  --gold-ink: #15803d;
 }
 
 @theme inline {
-  --font-display: "Bricolage Grotesque Variable", "Helvetica Neue", sans-serif;
-  --font-serif: "Literata Variable", "Georgia", serif;
+  --font-display: "JetBrains Mono", "DejaVu Sans Mono", monospace;
+  --font-sans: "JetBrains Mono", "DejaVu Sans Mono", monospace;
+  --font-serif: "JetBrains Mono", "DejaVu Sans Mono", monospace;
+  --font-mono: "JetBrains Mono", "DejaVu Sans Mono", monospace;
   --font-mono: "SFMono-Regular", "Menlo", "Consolas", monospace;
   --color-bronze: var(--bronze);
   --color-silver: var(--silver);
@@ -102,7 +107,7 @@
   }
 
   body {
-    @apply min-w-[320px] bg-background font-serif text-body leading-[1.7] antialiased transition-colors duration-200;
+    @apply min-w-[320px] bg-background font-sans text-body leading-[1.7] antialiased transition-colors duration-200;
     text-rendering: optimizeLegibility;
   }
 
@@ -114,7 +119,7 @@
   h2,
   h3,
   h4 {
-    @apply font-display font-semibold tracking-[-0.02em] text-foreground;
+    @apply font-display font-extrabold tracking-[-0.02em] text-foreground;
   }
 
   button,
@@ -127,7 +132,7 @@
   }
 
   ::selection {
-    background: color-mix(in srgb, var(--primary) 20%, transparent);
+    background: color-mix(in srgb, var(--primary) 40%, transparent);
   }
 
   :focus-visible {
@@ -140,4 +145,22 @@
   html {
     scroll-behavior: auto;
   }
+  .term-cursor {
+    animation: none !important;
+  }
+}
+
+/* Terminal caret used in the hero prompt. */
+.term-cursor {
+  display: inline-block;
+  width: 0.62ch;
+  height: 1.05em;
+  margin-left: 0.35ch;
+  vertical-align: -0.16em;
+  background: var(--primary);
+  animation: term-blink 1.05s step-end infinite;
+}
+@keyframes term-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }

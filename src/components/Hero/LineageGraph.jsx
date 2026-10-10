@@ -135,7 +135,7 @@ export function LineageGraph({ activeSkills, onActivate }) {
     >
       {layout.headers.map((h) => (
         <g key={h.id}>
-          <circle cx={h.x + 4} cy={h.y - 4} r="4" fill={stageColor(h.id)} />
+          <circle cx={h.x + 4} cy={h.y - 4} r="5" fill={stageColor(h.id)} stroke="var(--foreground)" strokeWidth="1.5" />
           <text x={h.x + 14} y={h.y} className="fill-muted-foreground font-display text-[12px]">
             {h.label}
             <tspan className="font-serif italic"> · {h.note}</tspan>
@@ -179,8 +179,8 @@ export function LineageGraph({ activeSkills, onActivate }) {
               style={{ opacity: lit ? 1 : 0.28, transition: "opacity 200ms", cursor: interactive ? "pointer" : "default" }}
             >
               <rect x={p.x} y={p.y} width={p.w} height={p.h} rx="6" fill="var(--card)" />
-              <rect x={p.x} y={p.y} width={p.w} height={p.h} rx="6" fill={stageColor(n.stage)} style={{ opacity: hot ? 0.2 : 0.07, transition: "opacity 200ms" }} />
-              <rect x={p.x} y={p.y} width={p.w} height={p.h} rx="6" fill="none" stroke={stageColor(n.stage)} strokeWidth="1.5" />
+              <rect x={p.x} y={p.y} width={p.w} height={p.h} rx="6" fill={stageColor(n.stage)} style={{ opacity: hot ? 0.35 : 0.16, transition: "opacity 200ms" }} />
+              <rect x={p.x} y={p.y} width={p.w} height={p.h} rx="6" fill="none" stroke={stageColor(n.stage)} strokeWidth="2" />
               <text x={p.x + 12} y={p.y + 19} className="fill-foreground font-display text-[13px] font-semibold">
                 {n.label[0]}
               </text>
@@ -203,7 +203,7 @@ export function LineageGraph({ activeSkills, onActivate }) {
         className="outline-none [&:focus-visible>rect]:stroke-[3]"
         style={{ opacity: isLit(TOOL_NODE.match) ? 1 : 0.28, transition: "opacity 200ms", cursor: "pointer" }}
       >
-        <rect x={layout.tool.x} y={layout.tool.y} width={layout.tool.w} height={layout.tool.h} rx="6" fill="none" stroke="var(--silver)" strokeWidth="1.5" strokeDasharray="5 4" />
+        <rect x={layout.tool.x} y={layout.tool.y} width={layout.tool.w} height={layout.tool.h} rx="6" fill="none" stroke="var(--muted-foreground)" strokeWidth="1.5" strokeDasharray="6 4" />
         <text x={layout.tool.x + 12} y={layout.tool.y + 22} className="fill-foreground font-display text-[13px] font-semibold">
           {TOOL_NODE.label[0]}
           <tspan className="fill-muted-foreground font-serif text-[11px] font-normal"> · {TOOL_NODE.label[1]}</tspan>

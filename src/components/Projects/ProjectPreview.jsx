@@ -24,8 +24,9 @@ export const ProjectPreview = ({ open, onOpenChange, title, architecture, story,
         event.preventDefault();
         event.currentTarget.focus();
       }}
-      className="grid h-[94vh] max-w-[98vw] grid-rows-[auto_minmax(0,1fr)] gap-2 p-3 sm:max-w-[min(98vw,1500px)]"
+      className="grid h-[94vh] max-w-[98vw] grid-rows-[auto_minmax(0,1fr)] gap-2 rounded-lg border border-border p-3 sm:max-w-[min(98vw,1500px)]"
     >
+      <div className="grid gap-1">
       <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 pr-8">
         <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
           <DialogTitle className="text-[1.1rem]">{title}</DialogTitle>
@@ -73,7 +74,11 @@ export const ProjectPreview = ({ open, onOpenChange, title, architecture, story,
           ) : null}
         </div>
       </div>
-      <div className="min-h-0 overflow-auto rounded-md border bg-background">
+      <p className="pr-8 text-[0.82rem] text-muted-foreground sm:hidden">
+        Tip: the diagram is wide — scroll sideways, or tap “Open full page” for the full view.
+      </p>
+      </div>
+      <div className="min-h-0 overflow-auto rounded-lg border border-border bg-background">
       <iframe
         title={`${title} ${view.label.toLowerCase()} diagram`}
         key={`${view.slug}-${autoplay}`}
