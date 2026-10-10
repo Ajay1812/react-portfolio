@@ -1,0 +1,132 @@
+[
+  {
+    "architecture": "pipeplatter",
+    "demo": "https://www.youtube.com/watch?v=_qPj_G656d8",
+    "demoType": "video",
+    "description": "An end-to-end food delivery lakehouse on Databricks: raw order and review data from S3 moves through Unity Catalog into a 25-model dbt medallion warehouse across 7 business domains. A daily Airflow DAG with 12+ tasks runs parallel ingestion, staged dbt runs, data quality tests and LLM enrichment, with idempotent loads and incremental fact models. A Streamlit layer serves dashboards, text-to-SQL chat and RAG review search over 5 gold marts.",
+    "images": [
+      "projects/pipeplatter-architecture.png",
+      "projects/pipeplatter-dashboard.png",
+      "projects/pipeplatter-sql-chat.png",
+      "projects/pipeplatter-airflow-dag.png"
+    ],
+    "outcome": "25 dbt models \u00b7 7 domains \u00b7 12+ task daily DAG \u00b7 5 gold marts with dashboards, text-to-SQL and RAG search",
+    "skills": [
+      "Databricks",
+      "dbt",
+      "Airflow",
+      "Groq",
+      "Streamlit",
+      "Python"
+    ],
+    "source": "https://github.com/Ajay1812/pipeplatter",
+    "title": "Pipeplatter",
+    "category": "lakehouse"
+  },
+  {
+    "architecture": "cityflux",
+    "demo": "",
+    "description": "A real-time event pipeline built with Kafka and Spark that ingests vehicle, GPS, and weather streams with low-latency processing, cutting decision lag by 40%. AWS Glue, Athena and Redshift handle cataloging and querying, which improved reporting performance by about 35%. Docker Compose environments cut setup time by over 50% for new contributors.",
+    "images": [
+      "projects/cityflux-architecture.png"
+    ],
+    "outcome": "40% lower decision lag \u00b7 ~35% faster reporting \u00b7 50%+ faster contributor setup",
+    "skills": [
+      "Kafka",
+      "Apache Spark",
+      "AWS Glue",
+      "Athena",
+      "Redshift",
+      "Docker"
+    ],
+    "source": "https://github.com/Ajay1812/CityFlux-Event-Streaming-using-kafka",
+    "title": "CityFlux Event Streaming",
+    "category": "streaming"
+  },
+  {
+    "architecture": "skylake",
+    "demo": "",
+    "description": "A flight delay and cancellation lakehouse built on PySpark and Apache Iceberg, with incremental manifest-based ingestion into S3, automatic Glue catalog registration, and Athena queries \u2014 orchestrated end to end with Airflow.",
+    "outcome": "Incremental Iceberg ingestion on S3 \u00b7 automatic Glue registration \u00b7 Athena analytics, orchestrated by Airflow",
+    "skills": [
+      "PySpark",
+      "Apache Iceberg",
+      "AWS Glue",
+      "Athena",
+      "Airflow"
+    ],
+    "source": "https://github.com/Ajay1812/SkyLake",
+    "title": "SkyLake",
+    "category": "lakehouse"
+  },
+  {
+    "architecture": "shorts-post-agent",
+    "channel": {
+      "href": "https://www.youtube.com/@DataPipelineDiaries",
+      "label": "Data Pipeline Diaries"
+    },
+    "demo": "https://www.youtube.com/watch?v=D2T0wCLYx-o",
+    "demoType": "video",
+    "description": "The engine behind the Data Pipeline Diaries channel. A topic comes off a SQLite queue and a LangGraph agent writes the script. TTS and Whisper add narration and subtitles, and HyperFrames renders the video. It also produces carousels, live carousels and cheatsheets, publishes everything to YouTube and Instagram, and keeps a backup on Telegram.",
+    "outcome": "Runs @DataPipelineDiaries end to end: topic queue \u2192 script \u2192 voice \u2192 subtitles \u2192 render \u2192 publish",
+    "skills": [
+      "LangGraph",
+      "LangChain",
+      "Whisper",
+      "HyperFrames",
+      "SQLite",
+      "YouTube Data API",
+      "Instagram Graph API",
+      "Telegram",
+      "Python"
+    ],
+    "source": "https://github.com/Ajay1812/shorts_post_agent",
+    "story": false,
+    "title": "Rundown: shorts_post_agent",
+    "category": "genai"
+  },
+  {
+    "architecture": "redditflow",
+    "demo": "",
+    "description": "A production-style Reddit ETL pipeline using Airflow and PySpark to move post data through S3, Glue, Athena, and Redshift for scalable analytics and more reliable ingestion.",
+    "images": [
+      "projects/redditflow-architecture.png"
+    ],
+    "outcome": "Scheduled PySpark ETL landing query-ready Reddit data in Athena and Redshift",
+    "skills": [
+      "Airflow",
+      "PySpark",
+      "AWS S3",
+      "Glue",
+      "Athena",
+      "Redshift"
+    ],
+    "source": "https://github.com/Ajay1812/Reddit_DataEngineering",
+    "title": "RedditFlow Scalable ETL",
+    "category": "lakehouse"
+  },
+  {
+    "architecture": [
+      {
+        "label": "Runtime",
+        "slug": "airflow-docker"
+      },
+      {
+        "label": "DAG flows",
+        "slug": "airflow-docker-dags"
+      }
+    ],
+    "demo": "",
+    "description": "A Docker-first Airflow workspace for developing and testing orchestration projects locally, with a setup oriented toward repeatable data-pipeline experimentation.",
+    "outcome": "Clone-and-run local Airflow for building and testing DAGs repeatably",
+    "skills": [
+      "Airflow",
+      "Docker",
+      "Python",
+      "ETL"
+    ],
+    "source": "https://github.com/Ajay1812/airflow-docker-projects",
+    "title": "Airflow Docker Projects",
+    "category": "lakehouse"
+  }
+]

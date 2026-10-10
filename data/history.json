@@ -1,0 +1,42 @@
+[
+  {
+    "role": "Data Engineer",
+    "organisation": "DAETL Solutions",
+    "startDate": "Jun, 2025",
+    "endDate": "Mar, 2026",
+    "summary": "Worked on Azure Databricks, PySpark, Delta Lake, and validation-first pipeline delivery.",
+    "experiences": [
+      "Migrated legacy Informatica ETL workflows (~100 GB/day) to Azure Databricks using PySpark, Spark SQL, and Delta Lake on ADLS Gen2 with Medallion architecture, improving pipeline performance by 40%.",
+      "Owned a data quality validation framework in Databricks covering 50+ Silver-layer tables: row-count reconciliation, column-level checks, and SQL-based business rules that catch mismatches before downstream reporting.",
+      "Worked with QA analysts and business users to turn Excel mapping rules into ADF-orchestrated Databricks pipelines, and tuned Spark jobs to cut runtime by 50%."
+    ],
+    "metric": {
+      "value": "-50%",
+      "label": "Spark runtime"
+    },
+    "metric2": {
+      "value": "100 GB/day",
+      "label": "migrated to Databricks"
+    }
+  },
+  {
+    "role": "Data Engineer",
+    "organisation": "VITISPRO LLC",
+    "startDate": "Apr, 2023",
+    "endDate": "Nov, 2023",
+    "summary": "Worked on cloud migration, API-driven ingestion, and AWS-focused data workflows.",
+    "experiences": [
+      "Owned the migration of key data functions and databases from GCP to AWS, aligning with engineering stakeholders on data cleaning rules and schema standards; cut project expenses by 55%.",
+      "Led automation of Eurostat and Comtrade API ingestion with analytics users defining the dataset requirements; reduced data retrieval time by 40%.",
+      "Extended ingestion workflows to parse 5 formats, including PNG and SVG, so internal teams could analyze mixed data through one standardized pipeline."
+    ],
+    "metric": {
+      "value": "-55%",
+      "label": "project expenses"
+    },
+    "metric2": {
+      "value": "-40%",
+      "label": "data retrieval time"
+    }
+  }
+]

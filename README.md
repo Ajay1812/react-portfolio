@@ -1,8 +1,25 @@
-# React + Vite
+# Ajay Kumar — Portfolio (Next.js)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Product design ("Reliable data, engineered.") rebuilt with **Next.js 14** (static export), **shadcn-style UI components**, **GSAP** motion and **Tailwind v4**.
 
-Currently, two official plugins are available:
+## Run locally
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+npm run dev      # http://localhost:3000
+```
+
+## Deploy (Netlify)
+
+Push this folder to the `main` branch of `Ajay1812/react-portfolio`.
+`netlify.toml` already sets build command `npm run build` and publish dir `out`.
+
+## What's inside
+
+- `app/` — layout, metadata, homepage
+- `components/ui/` — shadcn-style Button, Badge, Card, Tabs, Separator
+- `components/sections/` — Navbar, Hero, Projects, Experience, Footer, ArchModal
+- `lib/motion.jsx` — GSAP Reveal / stagger / Counter helpers
+- `data/` — projects.json (with `category` for the filter tabs), history.json
+- `public/architecture/` — interactive architecture diagrams (theme-aware via `?theme=`)
+- `public/assets/` — images, OG cover, resume PDF
